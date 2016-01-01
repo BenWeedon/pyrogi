@@ -1,5 +1,5 @@
-import graphics.pygame_graphics
+import engine.graphics.pygame_graphics as graphics
 
-graphics = graphics.pygame_graphics.PyGameGraphics()
-graphics.init_window(500, 500, 'test')
-graphics.draw_tile(None, None, None)
+g = graphics.PyGameGraphics()
+g.init_window(500, 500, 'test')
+g.draw_tile(None, None, None)
