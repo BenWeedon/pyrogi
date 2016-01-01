@@ -1,4 +1,4 @@
-import engine.backend.pygame_backend as pygame_backend
-import engine.backend.game as game
+from engine.backend.pygame_backend import PyGameBackend
+from engine.backend import Game
 
-pygame_backend.PyGameBackend(game.Game()).run()
+PyGameBackend(Game()).run()

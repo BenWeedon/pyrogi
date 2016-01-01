@@ -1,15 +1,15 @@
 import pygame
-import engine.graphics.graphics as graphics
-import engine.util.vector as vector
+from engine.graphics import Graphics
+from engine.util.vector import Vec2
 
-class PyGameGraphics(graphics.Graphics):
+class PyGameGraphics(Graphics):
     def init_window(self, dimensions, caption):
         self.screen = pygame.display.set_mode((dimensions.x, dimensions.y))
         pygame.display.set_caption(caption)
     
     def draw_tile(self, position, character, fg_color, bg_color):
         font_image = pygame.image.load('res/font.png').convert()
-        tile_image = self._get_tile_image(font_image, vector.Vec2(0, 0))
+        tile_image = self._get_tile_image(font_image, Vec2(0, 0))
         self.screen.blit(tile_image, (0, 0))
         pygame.display.update()
     

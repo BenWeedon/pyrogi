@@ -1,19 +1,19 @@
 import pygame
-import engine.graphics.pygame_graphics as graphics
-import engine.backend.backend as backend
-import engine.util.vector as vector
+from engine.graphics.pygame_graphics import PyGameGraphics
+from engine.backend import Backend
+from engine.util.vector import Vec2
 
 FRAMERATE = 60
 
-class PyGameBackend(backend.Backend):
+class PyGameBackend(Backend):
     def __init__(self, game):
         super(PyGameBackend, self).__init__(game)
         pygame.init()
     
     def run(self):
         clock = pygame.time.Clock()
-        g = graphics.PyGameGraphics()
-        g.init_window(vector.Vec2(500, 500), '')
+        g = PyGameGraphics()
+        g.init_window(Vec2(500, 500), '')
         while True:
             ev = pygame.event.poll()
             if ev.type == pygame.QUIT:
