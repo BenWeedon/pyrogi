@@ -1,6 +1,7 @@
 import pygame
 import engine.graphics.pygame_graphics as graphics
 import engine.backend.backend as backend
+import engine.util.vector as vector
 
 FRAMERATE = 60
 
@@ -12,7 +13,7 @@ class PyGameBackend(backend.Backend):
     def run(self):
         clock = pygame.time.Clock()
         g = graphics.PyGameGraphics()
-        g.init_window(500, 500, 'test')
+        g.init_window(vector.Vec2(500, 500), 'test')
         while True:
             ev = pygame.event.poll()
             if ev.type == pygame.QUIT:
