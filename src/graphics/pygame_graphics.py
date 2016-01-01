@@ -11,5 +11,5 @@ class PyGameGraphics(graphics.Graphics):
     
     def draw_tile(self, character, fg_color, bg_color):
         image = pygame.image.load('res/font.png').convert()
-        self.screen.blit(image)
+        self.screen.blit(image, (0, 0))
         pygame.display.update()
