@@ -2,9 +2,6 @@ import pygame
 import graphics
 
 class PyGameGraphics(graphics.Graphics):
-    def __init__(self):
-        pygame.init()
-    
     def init_window(self, width, height, caption):
         self.screen = pygame.display.set_mode((width, height))
         pygame.display.set_caption(caption)

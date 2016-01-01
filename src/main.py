@@ -1,5 +1,4 @@
-import engine.graphics.pygame_graphics as graphics
+import engine.backend.pygame_backend as pygame_backend
+import engine.backend.game as game
 
-g = graphics.PyGameGraphics()
-g.init_window(500, 500, 'test')
-g.draw_tile(None, None, None)
+pygame_backend.PyGameBackend(game.Game()).run()
