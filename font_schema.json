@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Font Schema",
+    "description": "The schema defining the font JSON files",
+    "type": "object",
+    "properties": {
+        "tileWidth": {
+            "type": "number",
+            "description": "The width of each tile"
+        },
+        "tileHeight": {
+            "type": "number",
+            "description": "The height of each tile"
+        }
+    },
+    "required": ["tileWidth", "tileHeight"]
+}
