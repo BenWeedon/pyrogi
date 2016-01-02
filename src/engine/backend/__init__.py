@@ -12,4 +12,4 @@ class Game(object):
     def onTick(self, millis):
         pass
     def onDraw(self, g):
-        Tile(None, None, None, Color(255, 0, 0, 100)).draw(g)
+        Tile(None, None, None, Color(255, 0, 0, 255)).draw(g)
