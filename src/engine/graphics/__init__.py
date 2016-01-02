@@ -22,7 +22,7 @@ class Tile(object):
 
 
 class Color(object):
-    def __init__(self, r, g, b, a=0):
+    def __init__(self, r, g, b, a=255):
         self.r = r
         self.g = g
         self.b = b
