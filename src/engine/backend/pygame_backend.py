@@ -25,3 +25,4 @@ class PyGameBackend(Backend):
             millis = clock.tick(FRAMERATE)
             self.game.onTick(millis)
             self.game.onDraw(g)
+            pygame.display.update()

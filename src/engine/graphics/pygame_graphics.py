@@ -14,7 +14,6 @@ class PyGameGraphics(Graphics):
         font_image, font_config = self._load_font('brogue.png')
         tile_image = self._get_tile_image(font_image, font_config, Vec2(0, 4), fg_color, bg_color)
         self.screen.blit(tile_image, (0, 0))
-        pygame.display.update()
     
     def _load_font(self, filename):
         font_image = pygame.image.load(os.path.join(FONT_PATH, filename)).convert()
