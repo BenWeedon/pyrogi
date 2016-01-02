@@ -18,3 +18,5 @@ class Game(object):
         Tile(Vec2(0, 0), None, Color(255, 255, 0, 255), Color(0, 255, 255, 255)).draw(g)
         Tile(Vec2(1, 1), None, Color(0, 0, 255, 255), Color(255, 255, 0, 255)).draw(g)
         Tile(Vec2(1, 1), None, Color(0, 0, 255, 255), Color(255, 0, 0, 100)).draw(g)
+        for i in xrange(200):
+            Tile(Vec2(1, 1), None, Color(0, 0, 255, 255), Color(255, 0, 0, 100)).draw(g)

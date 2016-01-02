@@ -13,7 +13,7 @@ class PyGameBackend(Backend):
     def run(self):
         clock = pygame.time.Clock()
         g = PyGameGraphics()
-        g.init_window(Vec2(5, 5), Vec2(30, 30), '')
+        g.init_window(Vec2(20, 20), Vec2(30, 30), '')
         while True:
             ev = pygame.event.poll()
             if ev.type == pygame.QUIT:

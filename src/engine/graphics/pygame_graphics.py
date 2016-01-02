@@ -21,7 +21,7 @@ class PyGameGraphics(Graphics):
     def draw_tile(self, position, character, fg_color, bg_color):
         font_image, font_config = self._load_font('brogue.png')
         tile_image = self._get_tile_image(font_image, font_config, Vec2(0, 4), fg_color, bg_color)
-        tile_image = pygame.transform.scale(tile_image, self.tile_dimensions.toTuple())
+        tile_image = pygame.transform.smoothscale(tile_image, self.tile_dimensions.toTuple())
         self.screen.blit(tile_image, (position*self.tile_dimensions).toTuple())
     
     def _load_font(self, filename):
