@@ -11,6 +11,12 @@
         "tileHeight": {
             "type": "number",
             "description": "The height of each tile"
+        },
+        "fontType": {
+            "enum": [
+                "grayscale", // the default
+                "alpha"
+            ]
         }
     },
     "required": ["tileWidth", "tileHeight"]

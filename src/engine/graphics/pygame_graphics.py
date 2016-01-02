@@ -5,6 +5,9 @@ from engine import FONT_PATH, FONT_CONFIG_EXTENSION
 from engine.graphics import Graphics, Color
 from engine.util.vector import Vec2
 
+GRAYSCALE_FONT_TYPE = 'grayscale'
+ALPHA_FONT_TYPE = 'alpha'
+
 class PyGameGraphics(Graphics):
     def __init__(self):
         self.fonts = {}
@@ -19,10 +22,12 @@ class PyGameGraphics(Graphics):
         self.screen.blit(tile_image, (0, 0))
     
     def _load_font(self, filename):
-        if (filename not in self.fonts):
-            font_image = self._grayscale_to_alpha(pygame.image.load(os.path.join(FONT_PATH, filename)).convert_alpha())
+        if filename not in self.fonts:
+            font_image = pygame.image.load(os.path.join(FONT_PATH, filename)).convert_alpha()
             config_filename = os.path.splitext(filename)[0] + FONT_CONFIG_EXTENSION
             font_config = self._load_font_json(os.path.join(FONT_PATH, config_filename))
+            if font_config.font_type == GRAYSCALE_FONT_TYPE:
+                font_image = self._grayscale_to_alpha(font_image)
             self.fonts[filename] = (font_image, font_config)
         
         return self.fonts[filename]
@@ -38,7 +43,8 @@ class PyGameGraphics(Graphics):
         with open(filename) as f:
             data = json.load(f)
             font_config = FontConfig(
-                Vec2(data['tileWidth'], data['tileHeight'])
+                Vec2(data['tileWidth'], data['tileHeight']),
+                data['fontType'] if 'fontType' in data else GRAYSCALE_FONT_TYPE
             )
             return font_config
     
@@ -64,5 +70,6 @@ class PyGameGraphics(Graphics):
         return fg_image, bg_image
 
 class FontConfig(object):
-    def __init__(self, tile_dimensions):
+    def __init__(self, tile_dimensions, font_type):
         self.tile_dimensions = tile_dimensions
+        self.font_type = font_type
