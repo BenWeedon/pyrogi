@@ -27,3 +27,8 @@ class Color(object):
         self.g = g
         self.b = b
         self.a = a
+    
+    def toRGBTuple(self):
+        return (self.r, self.g, self.b)
+    def toRGBATuple(self):
+        return (self.r, self.g, self.b, self.a)
