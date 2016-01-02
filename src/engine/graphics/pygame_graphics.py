@@ -12,14 +12,17 @@ class PyGameGraphics(Graphics):
     def __init__(self):
         self.fonts = {}
     
-    def init_window(self, dimensions, caption):
-        self.screen = pygame.display.set_mode((dimensions.x, dimensions.y))
+    def init_window(self, dimensions, tile_dimensions, caption):
+        self.screen = pygame.display.set_mode((dimensions*tile_dimensions).toTuple())
+        self.dimensions = dimensions
+        self.tile_dimensions = tile_dimensions
         pygame.display.set_caption(caption)
     
     def draw_tile(self, position, character, fg_color, bg_color):
         font_image, font_config = self._load_font('brogue.png')
         tile_image = self._get_tile_image(font_image, font_config, Vec2(0, 4), fg_color, bg_color)
-        self.screen.blit(tile_image, (0, 0))
+        tile_image = pygame.transform.scale(tile_image, self.tile_dimensions.toTuple())
+        self.screen.blit(tile_image, (position*self.tile_dimensions).toTuple())
     
     def _load_font(self, filename):
         if filename not in self.fonts:
