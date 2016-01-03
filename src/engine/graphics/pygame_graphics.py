@@ -66,7 +66,7 @@ class PyGameGraphics(Graphics):
         fg_image.blit(image, (0, 0), (index.x*dim.x, index.y*dim.y, (index.x+1)*dim.x, (index.y+1)*dim.y))
         fg_image.fill(fg_color.toRGBATuple(), special_flags=pygame.BLEND_RGBA_MIN)
         
-        bg_image = pygame.Surface((dim.x, dim.y)).convert_alpha()
+        bg_image = pygame.Surface((dim.x, dim.y)).convert()
         bg_image.fill(bg_color.toRGBTuple())
         bg_image.set_alpha(bg_color.a)
         

@@ -22,4 +22,4 @@ class TestUIElement(UIElement):
         pass
     
     def onDraw(self, g):
-        Tile(self.position, None, Color(255, 0, 0), Color(0, 255, 0)).draw(g)
+        Tile(self.position, None, Color(255, 0, 0), Color(0, 255, 0, 100)).draw(g)
