@@ -5,19 +5,24 @@
     "type": "object",
     "properties": {
         "tileWidth": {
-            "type": "number",
-            "description": "The width of each tile"
+            "description": "The width of each tile",
+            "type": "number"
         },
         "tileHeight": {
-            "type": "number",
-            "description": "The height of each tile"
+            "description": "The height of each tile",
+            "type": "number"
+        },
+        "characterMap": {
+            "description": "A map between each character/string and its location in the font file",
+            "type": "object"
         },
         "fontType": {
+            "description": "The type of the font file",
             "enum": [
                 "grayscale", // the default
                 "alpha"
             ]
         }
     },
-    "required": ["tileWidth", "tileHeight"]
+    "required": ["tileWidth", "tileHeight", "characterMap"]
 }

@@ -18,7 +18,7 @@ class TestUIElement(UIElement):
     def __init__(self, screen, position, dimensions):
         super(TestUIElement, self).__init__(screen, position, dimensions)
         self.position = Vec2(random.randint(0, 5), random.randint(0, 5))
-        self.addTile(Tile(self.position, None, Color(255, 0, 0), Color(0, 255, 0, 100)))
+        self.addTile(Tile(self.position, 'ram', Color(255, 0, 0), Color(0, 255, 0, 100)))
     
     def onTick(self, millis):
         pass

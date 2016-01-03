@@ -20,7 +20,7 @@ class PyGameGraphics(Graphics):
     
     def draw_tile(self, position, character, fg_color, bg_color):
         font_image, font_config = self._load_font('brogue.png')
-        tile_image = self._get_tile_image(font_image, font_config, Vec2(0, 4), fg_color, bg_color)
+        tile_image = self._get_tile_image(font_image, font_config, font_config.get_index(character), fg_color, bg_color)
         tile_image = pygame.transform.smoothscale(tile_image, self.tile_dimensions.toTuple())
         self.screen.blit(tile_image, (position*self.tile_dimensions).toTuple())
     
@@ -47,7 +47,8 @@ class PyGameGraphics(Graphics):
             data = json.load(f)
             font_config = FontConfig(
                 Vec2(data['tileWidth'], data['tileHeight']),
-                data['fontType'] if 'fontType' in data else GRAYSCALE_FONT_TYPE
+                data['fontType'] if 'fontType' in data else GRAYSCALE_FONT_TYPE,
+                data['characterMap']
             )
             return font_config
     
@@ -73,6 +74,11 @@ class PyGameGraphics(Graphics):
         return fg_image, bg_image
 
 class FontConfig(object):
-    def __init__(self, tile_dimensions, font_type):
+    def __init__(self, tile_dimensions, font_type, character_map):
         self.tile_dimensions = tile_dimensions
         self.font_type = font_type
+        self.character_map = character_map
+    
+    def get_index(self, character):
+        index = self.character_map[character]
+        return Vec2(index[0], index[1])
