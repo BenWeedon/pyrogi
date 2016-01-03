@@ -12,9 +12,9 @@ class PyGameGraphics(Graphics):
     def __init__(self):
         self.fonts = {}
     
-    def init_window(self, dimensions, tile_dimensions, caption):
-        self.screen = pygame.display.set_mode((dimensions*tile_dimensions).toTuple())
-        self.dimensions = dimensions
+    def init_window(self, window_dimensions, tile_dimensions, caption):
+        self.screen = pygame.display.set_mode((window_dimensions*tile_dimensions).toTuple())
+        self.window_dimensions = window_dimensions
         self.tile_dimensions = tile_dimensions
         pygame.display.set_caption(caption)
     

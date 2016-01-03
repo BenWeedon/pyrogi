@@ -6,14 +6,19 @@ from engine.util.vector import Vec2
 FRAMERATE = 60
 
 class PyGameBackend(Backend):
-    def __init__(self, game):
-        super(PyGameBackend, self).__init__(game)
+    def __init__(self, game, window_dimensions, tile_dimensions, caption):
+        super(PyGameBackend, self).__init__(
+            game, window_dimensions,
+            tile_dimensions, caption
+        )
         pygame.init()
     
     def run(self):
         clock = pygame.time.Clock()
         g = PyGameGraphics()
-        g.init_window(Vec2(20, 20), Vec2(30, 30), '')
+        g.init_window(
+            self.window_dimensions, self.tile_dimensions, self.caption
+        )
         while True:
             ev = pygame.event.poll()
             if ev.type == pygame.QUIT:

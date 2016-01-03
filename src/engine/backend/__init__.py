@@ -2,8 +2,11 @@ from engine.graphics import Tile, Color
 from engine.util.vector import Vec2
 
 class Backend(object):
-    def __init__(self, game):
+    def __init__(self, game, window_dimensions, tile_dimensions, caption):
         self.game = game
+        self.window_dimensions = window_dimensions
+        self.tile_dimensions = tile_dimensions
+        self.caption = caption
     
     def run(self):
         raise NotImplementedError()
