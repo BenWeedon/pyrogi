@@ -6,19 +6,13 @@ class Graphics(object):
 
 
 class Tile(object):
-    def __init__(self, position, character, fg_color, bg_color):
-        self.position = position
+    def __init__(self, character, fg_color, bg_color):
         self.character = character
         self.fg_color = fg_color
         self.bg_color = bg_color
     
-    def x(self):
-        return self.position.x
-    def y(self):
-        return self.position.y
-    
-    def draw(self, g):
-        g.draw_tile(self.position, self.character, self.fg_color, self.bg_color)
+    def draw(self, g, position):
+        g.draw_tile(position, self.character, self.fg_color, self.bg_color)
 
 
 class Color(object):
@@ -34,12 +28,13 @@ class Color(object):
         return (self.r, self.g, self.b, self.a)
 
 class Drawable(object):
-    def __init__(self):
+    def __init__(self, position):
+        self.position = position
         self.tiles = []
     
-    def addTile(self, tile):
-        self.tiles.append(tile)
+    def addTile(self, tile, offset):
+        self.tiles.append((tile, offset))
     
     def draw(self, g):
-        for tile in self.tiles:
-            tile.draw(g)
+        for tile, offset in self.tiles:
+            tile.draw(g, self.position+offset)

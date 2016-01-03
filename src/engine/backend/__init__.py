@@ -31,8 +31,8 @@ class Game(object):
             self.screens.pop()
 
 class UIElementContainer(Drawable):
-    def __init__(self):
-        super(UIElementContainer, self).__init__()
+    def __init__(self, position):
+        super(UIElementContainer, self).__init__(position)
         self.ui_elements = []
     
     def onTick(self, millis):
@@ -50,4 +50,5 @@ class UIElementContainer(Drawable):
         self.ui_elements.remove(child)
 
 class Screen(UIElementContainer):
-    pass
+    def __init__(self):
+        super(Screen, self).__init__(Vec2(0, 0))
