@@ -1,4 +1,4 @@
-from engine.graphics import Tile, Color
+from engine.graphics import Tile, Color, Drawable
 from engine.util.vector import Vec2
 
 class Backend(object):
@@ -30,8 +30,9 @@ class Game(object):
         for i in xrange(n):
             self.screens.pop()
 
-class UIElementContainer(object):
+class UIElementContainer(Drawable):
     def __init__(self):
+        super(UIElementContainer, self).__init__()
         self.ui_elements = []
     
     def onTick(self, millis):
@@ -39,6 +40,7 @@ class UIElementContainer(object):
             elt.onTick(millis)
     
     def onDraw(self, g):
+        self.draw(g)
         for elt in self.ui_elements[:]:
             elt.onDraw(g)
     

@@ -32,3 +32,14 @@ class Color(object):
         return (self.r, self.g, self.b)
     def toRGBATuple(self):
         return (self.r, self.g, self.b, self.a)
+
+class Drawable(object):
+    def __init__(self):
+        self.tiles = []
+    
+    def addTile(self, tile):
+        self.tiles.append(tile)
+    
+    def draw(self, g):
+        for tile in self.tiles:
+            tile.draw(g)

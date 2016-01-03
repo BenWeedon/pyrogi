@@ -5,4 +5,4 @@ class TestScreen(Screen):
     def __init__(self):
         super(TestScreen, self).__init__()
         for i in xrange(30):
-            self.addChild(TestUIElement())
+            self.addChild(TestUIElement(self, None, None))
