@@ -27,6 +27,17 @@ class Color(object):
     def to_RGBA_tuple(self):
         return (self.r, self.g, self.b, self.a)
 
+class Paint(object):
+    def get_tile_color(self, absolute_position, relative_position):
+        """absolute_position is absolute in the window, relative_position is relative_position to the Drawable being colored"""
+        raise NotImplementedError()
+class SolidPaint(Paint):
+    def __init__(self, color):
+        self.color = color
+    def get_tile_color(self, absolute_position, relative_position):
+        return self.color
+
+
 class Drawable(object):
     def __init__(self, position):
         self.position = position
