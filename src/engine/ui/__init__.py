@@ -20,3 +20,10 @@ class TestUIElement(UIElement):
     
     def onTick(self, millis):
         pass
+    
+    def onMouseButtonDown(self, event):
+        for tile in self.tiles:
+            tile[0].bg_color = Color(255, 255, 255)
+    def onMouseButtonUp(self, event):
+        for tile in self.tiles:
+            tile[0].bg_color = Color(0, 255, 0, 100)
