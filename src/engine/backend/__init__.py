@@ -2,19 +2,14 @@ from engine.graphics import Tile, Color, Drawable
 from engine.util.vector import Vec2
 
 class Backend(object):
-    def __init__(self, game, window_dimensions, tile_dimensions, caption):
-        self.game = game
+    def __init__(self, window_dimensions, tile_dimensions, caption, starting_screen):
         self.window_dimensions = window_dimensions
         self.tile_dimensions = tile_dimensions
         self.caption = caption
+        self.screens = [starting_screen]
     
     def run(self):
         raise NotImplementedError()
-
-
-class Game(object):
-    def __init__(self, starting_screen):
-        self.screens = [starting_screen]
     
     def onTick(self, millis):
         self.getCurrentScreen().onTick(millis)
@@ -42,6 +37,7 @@ class Game(object):
         self.getCurrentScreen().handleMouseButtonUp(event)
     def handleMouseWheelScrolled(self, event):
         self.getCurrentScreen().handleMouseWheelScrolled(event)
+
 
 class UIElementContainer(Drawable):
     def __init__(self, position):
