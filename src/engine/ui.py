@@ -8,9 +8,50 @@ class UIElement(UIElementContainer):
         UIElementContainer.__init__(self, position)
         self.screen = screen
         self.dimensions = dimensions
+        self.mouse_down_on_element = False
     
     def onTick(self, millis):
         raise NotImplementedError()
+    
+    def onKeyDown(self, event):
+        pass
+    def onKeyUp(self, event):
+        pass
+    def onMouseMoved(self, event):
+        if not self.contains_position(event.last_position) and self.contains_position(event.position):
+            self.onMouseEntered(event)
+        elif self.contains_position(event.last_position) and not self.contains_position(event.position):
+            self.onMouseLeft(event)
+        elif self.contains_position(event.last_position) and self.contains_position(event.position):
+            self.onMouseMovedInside(event)
+    def onMouseButtonDown(self, event):
+        if self.contains_position(event.position):
+            self.mouse_down_on_element = True
+            self.onMouseDown(event)
+    def onMouseButtonUp(self, event):
+        if self.mouse_down_on_element and self.contains_position(event.position):
+            self.onClicked(event)
+        self.mouse_down_on_element = False
+        if self.contains_position(event.position):
+            self.onMouseUp(event)
+    def onMouseWheelScrolled(self, event):
+        if self.contains_position(event.position):
+            self.onMouseScrolled(event)
+    
+    def onMouseEntered(self, event):
+        pass
+    def onMouseLeft(self, event):
+        pass
+    def onMouseMovedInside(self, event):
+        pass
+    def onMouseDown(self, event):
+        pass
+    def onMouseUp(self, event):
+        pass
+    def onClicked(self, event):
+        pass
+    def onMouseScrolled(self, event):
+        pass
 
 
 class Button(UIElement):
@@ -30,9 +71,9 @@ class TestUIElement(UIElement):
     def onTick(self, millis):
         pass
     
-    def onMouseButtonDown(self, event):
+    def onMouseEntered(self, event):
         for tile in self.tiles:
             tile[0].bg_color = Color(255, 255, 255)
-    def onMouseButtonUp(self, event):
+    def onMouseLeft(self, event):
         for tile in self.tiles:
             tile[0].bg_color = Color(0, 255, 0, 100)

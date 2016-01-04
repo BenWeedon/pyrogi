@@ -19,7 +19,7 @@ class PyGameBackend(Backend):
         clock = pygame.time.Clock()
         g = PyGameGraphics()
         g.init_window(
-            self.window_dimensions, self.tile_dimensions, self.caption
+            engine.window_dimensions, engine.tile_dimensions, self.caption
         )
         while True:
             if pygame.event.peek(pygame.QUIT):

@@ -38,3 +38,10 @@ class Drawable(object):
     def draw(self, g):
         for tile, offset in self.tiles:
             tile.draw(g, self.position+offset)
+    
+    def contains_position(self, position):
+        for tile, offset in self.tiles:
+            tile_position = self.position + offset
+            if tile_position == position:
+                return True
+        return False

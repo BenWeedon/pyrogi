@@ -1,10 +1,11 @@
+import engine
 from engine.graphics import Tile, Color, Drawable
 from engine.util.vector import Vec2
 
 class Backend(object):
     def __init__(self, window_dimensions, tile_dimensions, caption, starting_screen):
-        self.window_dimensions = window_dimensions
-        self.tile_dimensions = tile_dimensions
+        engine.window_dimensions = window_dimensions
+        engine.tile_dimensions = tile_dimensions
         self.caption = caption
         self.screens = [starting_screen]
     
