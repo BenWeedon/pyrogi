@@ -36,8 +36,8 @@ class Vec2(object):
     
     
     
-    def toTuple(self):
+    def to_tuple(self):
         return (self.x, self.y)
     
     def __str__(self):
-        return str(self.toTuple())
+        return str(self.to_tuple())

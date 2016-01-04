@@ -22,9 +22,9 @@ class Color(object):
         self.b = b
         self.a = a
     
-    def toRGBTuple(self):
+    def to_RGB_tuple(self):
         return (self.r, self.g, self.b)
-    def toRGBATuple(self):
+    def to_RGBA_tuple(self):
         return (self.r, self.g, self.b, self.a)
 
 class Drawable(object):
@@ -32,7 +32,7 @@ class Drawable(object):
         self.position = position
         self.tiles = []
     
-    def addTile(self, tile, offset):
+    def add_tile(self, tile, offset):
         self.tiles.append((tile, offset))
     
     def draw(self, g):

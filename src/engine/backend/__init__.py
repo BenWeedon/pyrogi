@@ -12,32 +12,32 @@ class Backend(object):
     def run(self):
         raise NotImplementedError()
     
-    def onTick(self, millis):
-        self.getCurrentScreen().onTick(millis)
+    def on_tick(self, millis):
+        self.get_current_screen().on_tick(millis)
     
-    def onDraw(self, g):
-        self.getCurrentScreen().onDraw(g)
+    def on_draw(self, g):
+        self.get_current_screen().on_draw(g)
     
-    def getCurrentScreen(self):
+    def get_current_screen(self):
         return self.screens[-1]
-    def setScreen(self, screen):
+    def set_screen(self, screen):
         self.screens.append(screen)
-    def goBackNScreens(self, n):
+    def go_back_n_screens(self, n):
         for i in xrange(n):
             self.screens.pop()
     
-    def handleKeyDown(self, event):
-        self.getCurrentScreen().handleKeyDown(event)
-    def handleKeyUp(self, event):
-        self.getCurrentScreen().handleKeyUp(event)
-    def handleMouseMoved(self, event):
-        self.getCurrentScreen().handleMouseMoved(event)
-    def handleMouseButtonDown(self, event):
-        self.getCurrentScreen().handleMouseButtonDown(event)
-    def handleMouseButtonUp(self, event):
-        self.getCurrentScreen().handleMouseButtonUp(event)
-    def handleMouseWheelScrolled(self, event):
-        self.getCurrentScreen().handleMouseWheelScrolled(event)
+    def handle_key_down(self, event):
+        self.get_current_screen().handle_key_down(event)
+    def handle_key_up(self, event):
+        self.get_current_screen().handle_key_up(event)
+    def handle_mouse_moved(self, event):
+        self.get_current_screen().handle_mouse_moved(event)
+    def handle_mouse_button_down(self, event):
+        self.get_current_screen().handle_mouse_button_down(event)
+    def handle_mouse_button_up(self, event):
+        self.get_current_screen().handle_mouse_button_up(event)
+    def handle_mouse_wheel_scrolled(self, event):
+        self.get_current_screen().handle_mouse_wheel_scrolled(event)
 
 
 class UIElementContainer(Drawable):
@@ -45,56 +45,56 @@ class UIElementContainer(Drawable):
         super(UIElementContainer, self).__init__(position)
         self.ui_elements = []
     
-    def onTick(self, millis):
+    def on_tick(self, millis):
         for elt in self.ui_elements[:]:
-            elt.onTick(millis)
+            elt.on_tick(millis)
     
-    def onDraw(self, g):
+    def on_draw(self, g):
         self.draw(g)
         for elt in self.ui_elements[:]:
-            elt.onDraw(g)
+            elt.on_draw(g)
     
-    def addChild(self, child):
+    def add_child(self, child):
         self.ui_elements.append(child)
-    def removeChild(self, child):
+    def remove_child(self, child):
         self.ui_elements.remove(child)
     
-    def handleKeyDown(self, event):
-        self.onKeyDown(event)
+    def handle_key_down(self, event):
+        self.on_key_down(event)
         for elt in self.ui_elements[:]:
-            elt.handleKeyDown(event)
-    def handleKeyUp(self, event):
-        self.onKeyUp(event)
+            elt.handle_key_down(event)
+    def handle_key_up(self, event):
+        self.on_key_up(event)
         for elt in self.ui_elements[:]:
-            elt.handleKeyUp(event)
-    def handleMouseMoved(self, event):
-        self.onMouseMoved(event)
+            elt.handle_key_up(event)
+    def handle_mouse_moved(self, event):
+        self.on_mouse_moved(event)
         for elt in self.ui_elements[:]:
-            elt.handleMouseMoved(event)
-    def handleMouseButtonDown(self, event):
-        self.onMouseButtonDown(event)
+            elt.handle_mouse_moved(event)
+    def handle_mouse_button_down(self, event):
+        self.on_mouse_button_down(event)
         for elt in self.ui_elements[:]:
-            elt.handleMouseButtonDown(event)
-    def handleMouseButtonUp(self, event):
-        self.onMouseButtonUp(event)
+            elt.handle_mouse_button_down(event)
+    def handle_mouse_button_up(self, event):
+        self.on_mouse_button_up(event)
         for elt in self.ui_elements[:]:
-            elt.handleMouseButtonUp(event)
-    def handleMouseWheelScrolled(self, event):
-        self.onMouseWheelScrolled(event)
+            elt.handle_mouse_button_up(event)
+    def handle_mouse_wheel_scrolled(self, event):
+        self.on_mouse_wheel_scrolled(event)
         for elt in self.ui_elements[:]:
-            elt.handleMouseWheelScrolled(event)
+            elt.handle_mouse_wheel_scrolled(event)
     
-    def onKeyDown(self, event):
+    def on_key_down(self, event):
         pass
-    def onKeyUp(self, event):
+    def on_key_up(self, event):
         pass
-    def onMouseMoved(self, event):
+    def on_mouse_moved(self, event):
         pass
-    def onMouseButtonDown(self, event):
+    def on_mouse_button_down(self, event):
         pass
-    def onMouseButtonUp(self, event):
+    def on_mouse_button_up(self, event):
         pass
-    def onMouseWheelScrolled(self, event):
+    def on_mouse_wheel_scrolled(self, event):
         pass
 
 class Screen(UIElementContainer):

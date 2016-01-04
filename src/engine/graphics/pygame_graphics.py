@@ -13,7 +13,7 @@ class PyGameGraphics(Graphics):
         self.fonts = {}
     
     def init_window(self, window_dimensions, tile_dimensions, caption):
-        self.screen = pygame.display.set_mode((window_dimensions*tile_dimensions).toTuple())
+        self.screen = pygame.display.set_mode((window_dimensions*tile_dimensions).to_tuple())
         self.window_dimensions = window_dimensions
         self.tile_dimensions = tile_dimensions
         pygame.display.set_caption(caption)
@@ -21,8 +21,8 @@ class PyGameGraphics(Graphics):
     def draw_tile(self, position, character, fg_color, bg_color):
         font_image, font_config = self._load_font('brogue.png')
         tile_image = self._get_tile_image(font_image, font_config, font_config.get_index(character), fg_color, bg_color)
-        tile_image = pygame.transform.smoothscale(tile_image, self.tile_dimensions.toTuple())
-        self.screen.blit(tile_image, (position*self.tile_dimensions).toTuple())
+        tile_image = pygame.transform.smoothscale(tile_image, self.tile_dimensions.to_tuple())
+        self.screen.blit(tile_image, (position*self.tile_dimensions).to_tuple())
     
     def _load_font(self, filename):
         if filename not in self.fonts:
@@ -65,10 +65,10 @@ class PyGameGraphics(Graphics):
         fg_image = pygame.Surface((dim.x, dim.y)).convert_alpha()
         fg_image.fill((255, 255, 255, 0))
         fg_image.blit(image, (0, 0), (index.x*dim.x, index.y*dim.y, (index.x+1)*dim.x, (index.y+1)*dim.y))
-        fg_image.fill(fg_color.toRGBATuple(), special_flags=pygame.BLEND_RGBA_MIN)
+        fg_image.fill(fg_color.to_RGBA_tuple(), special_flags=pygame.BLEND_RGBA_MIN)
         
         bg_image = pygame.Surface((dim.x, dim.y)).convert()
-        bg_image.fill(bg_color.toRGBTuple())
+        bg_image.fill(bg_color.to_RGB_tuple())
         bg_image.set_alpha(bg_color.a)
         
         return fg_image, bg_image

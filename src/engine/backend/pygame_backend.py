@@ -25,30 +25,30 @@ class PyGameBackend(Backend):
             if pygame.event.peek(pygame.QUIT):
                 break
             else:
-                self._handleEvents(pygame.event.get())
+                self._handle_events(pygame.event.get())
             
             fps = clock.get_fps()
             pygame.display.set_caption('FPS: ' + str(fps))
             
             millis = clock.tick(TARGET_FRAMERATE)
-            self.onTick(millis)
-            self.onDraw(g)
+            self.on_tick(millis)
+            self.on_draw(g)
             pygame.display.update()
     
-    def _handleEvents(self, events):
+    def _handle_events(self, events):
         for event in events:
             if event.type == pygame.KEYDOWN:
-                self.handleKeyDown(KeyDownEvent(event.unicode, event.key, event.mod))
+                self.handle_key_down(KeyDownEvent(event.unicode, event.key, event.mod))
             elif event.type == pygame.KEYUP:
-                self.handleKeyUp(KeyUpEvent(event.key, event.mod))
+                self.handle_key_up(KeyUpEvent(event.key, event.mod))
             elif event.type == pygame.MOUSEMOTION:
-                self.handleMouseMoved(MouseMovedEvent(event.pos, event.rel, event.buttons))
+                self.handle_mouse_moved(MouseMovedEvent(event.pos, event.rel, event.buttons))
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == engine.events.SCROLL_WHEEL_UP:
-                    self.handleMouseWheelScrolled(MouseWheelScrolledEvent(event.pos, 1))
+                    self.handle_mouse_wheel_scrolled(MouseWheelScrolledEvent(event.pos, 1))
                 elif event.button == engine.events.SCROLL_WHEEL_DOWN:
-                    self.handleMouseWheelScrolled(MouseWheelScrolledEvent(event.pos, -1))
+                    self.handle_mouse_wheel_scrolled(MouseWheelScrolledEvent(event.pos, -1))
                 else:
-                    self.handleMouseButtonDown(MouseButtonDownEvent(event.pos, event.button))
+                    self.handle_mouse_button_down(MouseButtonDownEvent(event.pos, event.button))
             elif event.type == pygame.MOUSEBUTTONUP:
-                self.handleMouseButtonUp(MouseButtonUpEvent(event.pos, event.button))
+                self.handle_mouse_button_up(MouseButtonUpEvent(event.pos, event.button))

@@ -10,47 +10,47 @@ class UIElement(UIElementContainer):
         self.dimensions = dimensions
         self.mouse_down_on_element = False
     
-    def onTick(self, millis):
+    def on_tick(self, millis):
         raise NotImplementedError()
     
-    def onKeyDown(self, event):
+    def on_key_down(self, event):
         pass
-    def onKeyUp(self, event):
+    def on_key_up(self, event):
         pass
-    def onMouseMoved(self, event):
+    def on_mouse_moved(self, event):
         if not self.contains_position(event.last_position) and self.contains_position(event.position):
-            self.onMouseEntered(event)
+            self.on_mouse_entered(event)
         elif self.contains_position(event.last_position) and not self.contains_position(event.position):
-            self.onMouseLeft(event)
+            self.on_mouse_left(event)
         elif self.contains_position(event.last_position) and self.contains_position(event.position):
-            self.onMouseMovedInside(event)
-    def onMouseButtonDown(self, event):
+            self.on_mouse_moved_inside(event)
+    def on_mouse_button_down(self, event):
         if self.contains_position(event.position):
             self.mouse_down_on_element = True
-            self.onMouseDown(event)
-    def onMouseButtonUp(self, event):
+            self.on_mouse_down(event)
+    def on_mouse_button_up(self, event):
         if self.mouse_down_on_element and self.contains_position(event.position):
-            self.onClicked(event)
+            self.on_clicked(event)
         self.mouse_down_on_element = False
         if self.contains_position(event.position):
-            self.onMouseUp(event)
-    def onMouseWheelScrolled(self, event):
+            self.on_mouse_up(event)
+    def on_mouse_wheel_scrolled(self, event):
         if self.contains_position(event.position):
-            self.onMouseScrolled(event)
+            self.on_mouse_scrolled(event)
     
-    def onMouseEntered(self, event):
+    def on_mouse_entered(self, event):
         pass
-    def onMouseLeft(self, event):
+    def on_mouse_left(self, event):
         pass
-    def onMouseMovedInside(self, event):
+    def on_mouse_moved_inside(self, event):
         pass
-    def onMouseDown(self, event):
+    def on_mouse_down(self, event):
         pass
-    def onMouseUp(self, event):
+    def on_mouse_up(self, event):
         pass
-    def onClicked(self, event):
+    def on_clicked(self, event):
         pass
-    def onMouseScrolled(self, event):
+    def on_mouse_scrolled(self, event):
         pass
 
 
@@ -58,7 +58,7 @@ class Button(UIElement):
     def __init__(self, screen, position, dimensions):
         super(Button, self).__init__(screen, position, dimensions)
     
-    def onTick(self, millis):
+    def on_tick(self, millis):
         pass
 
 
@@ -66,14 +66,14 @@ class TestUIElement(UIElement):
     def __init__(self, screen, position, dimensions):
         super(TestUIElement, self).__init__(screen, position, dimensions)
         self.position = Vec2(random.randint(0, 5), random.randint(0, 5))
-        self.addTile(Tile('ram', Color(255, 0, 0), Color(0, 255, 0, 100)), Vec2(0, 0))
+        self.add_tile(Tile('ram', Color(255, 0, 0), Color(0, 255, 0, 100)), Vec2(0, 0))
     
-    def onTick(self, millis):
+    def on_tick(self, millis):
         pass
     
-    def onMouseEntered(self, event):
+    def on_mouse_entered(self, event):
         for tile in self.tiles:
             tile[0].bg_color = Color(255, 255, 255)
-    def onMouseLeft(self, event):
+    def on_mouse_left(self, event):
         for tile in self.tiles:
             tile[0].bg_color = Color(0, 255, 0, 100)
