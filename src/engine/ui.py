@@ -12,6 +12,15 @@ class UIElement(UIElementContainer):
     def onTick(self, millis):
         raise NotImplementedError()
 
+
+class Button(UIElement):
+    def __init__(self, screen, position, dimensions):
+        super(Button, self).__init__(screen, position, dimensions)
+    
+    def onTick(self, millis):
+        pass
+
+
 class TestUIElement(UIElement):
     def __init__(self, screen, position, dimensions):
         super(TestUIElement, self).__init__(screen, position, dimensions)
