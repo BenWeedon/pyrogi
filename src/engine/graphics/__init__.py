@@ -31,6 +31,8 @@ class Paint(object):
     def get_tile_color(self, absolute_position, relative_position):
         """absolute_position is absolute in the window, relative_position is relative_position to the Drawable being colored"""
         raise NotImplementedError()
+    def tick(millis):
+        pass
 class SolidPaint(Paint):
     def __init__(self, color):
         self.color = color
@@ -39,12 +41,28 @@ class SolidPaint(Paint):
 
 
 class Drawable(object):
-    def __init__(self, position):
+    def __init__(self, position, fg_paint=None, bg_paint=None):
         self.position = position
+        self.fg_paint = fg_paint
+        self.bg_paint = bg_paint
         self.tiles = []
     
     def add_tile(self, tile, offset):
         self.tiles.append((tile, offset))
+    
+    def update_drawable(self, millis):
+        self._update_paint(self.fg_paint, True)
+        self._update_paint(self.bg_paint, False)
+    
+    def _update_paint(self, paint, is_foreground):
+        if paint is not None:
+            paint.tick(millis)
+            for tile, offset in self.tiles:
+                color = paint.get_tile_color(self.position+offset, offset)
+                if is_foreground:
+                    tile.fg_color = color
+                else:
+                    tile.bg_color = color
     
     def draw(self, g):
         for tile, offset in self.tiles:

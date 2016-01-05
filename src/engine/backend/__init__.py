@@ -48,6 +48,7 @@ class UIElementContainer(Drawable):
     def on_tick(self, millis):
         for elt in self.ui_elements[:]:
             elt.on_tick(millis)
+            elt.update_drawable(millis)
     
     def on_draw(self, g):
         self.draw(g)
