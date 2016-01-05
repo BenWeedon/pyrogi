@@ -82,6 +82,9 @@ class Button(UIElement):
         self._update_paints()
     def on_mouse_left(self, event):
         self._update_paints()
+    def on_mouse_button_up(self, event):
+        super(Button, self).on_mouse_button_up(event)
+        self._update_paints()
     
     def _update_paints(self):
         if self.mouse_down_on_element:
