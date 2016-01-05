@@ -62,6 +62,8 @@ class Button(UIElement):
         self.add_rectangle(dimensions, '!', Color(0, 0, 0), Color(0, 0, 0))
         
         self.text = text
+        self.write_text(text)
+        
         self.base_paint = SolidPaint(Color(200, 200, 200))
         self.hover_paint = SolidPaint(Color(100, 100, 100))
         self.click_paint = SolidPaint(Color(70, 70, 70))
