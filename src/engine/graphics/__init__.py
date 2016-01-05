@@ -51,6 +51,9 @@ class Drawable(object):
     
     def add_tile(self, tile, offset):
         self.tiles.append((tile, offset))
+        # sort in top-to-bottom, left-to-right text order
+        self.tiles.sort(key=lambda pair: pair[1].y)
+        self.tiles.sort(key=lambda pair: pair[1].x)
     def add_rectangle(self, dimensions, character, fg_color, bg_color):
         for x in xrange(dimensions.x):
             for y in xrange(dimensions.y):
