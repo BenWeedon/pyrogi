@@ -1,8 +1,9 @@
 from engine.backend import Screen
-from engine.ui import TestUIElement
+from engine.ui import Button
+from engine.util.vector import Vec2
 
 class MainScreen(Screen):
     def __init__(self):
         super(MainScreen, self).__init__()
         for i in xrange(30):
-            self.add_child(TestUIElement(self, None, None))
+            self.add_child(Button(self, Vec2(3, 2), Vec2(4, 1), 'test button'))

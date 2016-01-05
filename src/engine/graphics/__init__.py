@@ -1,3 +1,5 @@
+from engine.util.vector import Vec2
+
 class Graphics(object):
     def init_window(self, window_dimensions, tile_dimensions, caption):
         raise NotImplementedError()
@@ -31,7 +33,7 @@ class Paint(object):
     def get_tile_color(self, absolute_position, relative_position):
         """absolute_position is absolute in the window, relative_position is relative_position to the Drawable being colored"""
         raise NotImplementedError()
-    def tick(millis):
+    def tick(self, millis):
         pass
 class SolidPaint(Paint):
     def __init__(self, color):
@@ -49,12 +51,16 @@ class Drawable(object):
     
     def add_tile(self, tile, offset):
         self.tiles.append((tile, offset))
+    def add_rectangle(self, dimensions, character, fg_color, bg_color):
+        for x in xrange(dimensions.x):
+            for y in xrange(dimensions.y):
+                self.add_tile(Tile(character, fg_color, bg_color), Vec2(x, y))
     
     def update_drawable(self, millis):
-        self._update_paint(self.fg_paint, True)
-        self._update_paint(self.bg_paint, False)
+        self._update_paint(millis, self.fg_paint, True)
+        self._update_paint(millis, self.bg_paint, False)
     
-    def _update_paint(self, paint, is_foreground):
+    def _update_paint(self, millis, paint, is_foreground):
         if paint is not None:
             paint.tick(millis)
             for tile, offset in self.tiles:
