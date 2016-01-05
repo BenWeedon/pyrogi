@@ -10,7 +10,8 @@ ALPHA_FONT_TYPE = 'alpha'
 
 class PyGameGraphics(Graphics):
     def __init__(self):
-        self.fonts = {}
+        self.font_cache = {}
+        self.tile_cache = {}
     
     def init_window(self, window_dimensions, tile_dimensions, caption):
         self.screen = pygame.display.set_mode((window_dimensions*tile_dimensions).to_tuple())
@@ -19,21 +20,25 @@ class PyGameGraphics(Graphics):
         pygame.display.set_caption(caption)
     
     def draw_tile(self, position, character, fg_color, bg_color):
-        font_image, font_config = self._load_font('brogue.png')
-        tile_image = self._get_tile_image(font_image, font_config, font_config.get_index(character), fg_color, bg_color)
-        tile_image = pygame.transform.smoothscale(tile_image, self.tile_dimensions.to_tuple())
-        self.screen.blit(tile_image, (position*self.tile_dimensions).to_tuple())
+        key = ('brogue.png', character, fg_color, bg_color)
+        if key not in self.tile_cache:
+            font_image, font_config = self._load_font('brogue.png')
+            tile_image = self._get_tile_image(font_image, font_config, font_config.get_index(character), fg_color, bg_color)
+            tile_image = pygame.transform.smoothscale(tile_image, self.tile_dimensions.to_tuple())
+            self.tile_cache[key] = tile_image
+        
+        self.screen.blit(self.tile_cache[key], (position*self.tile_dimensions).to_tuple())
     
     def _load_font(self, filename):
-        if filename not in self.fonts:
+        if filename not in self.font_cache:
             font_image = pygame.image.load(os.path.join(FONT_PATH, filename)).convert_alpha()
             config_filename = os.path.splitext(filename)[0] + FONT_CONFIG_EXTENSION
             font_config = self._load_font_json(os.path.join(FONT_PATH, config_filename))
             if font_config.font_type == GRAYSCALE_FONT_TYPE:
                 font_image = self._grayscale_to_alpha(font_image)
-            self.fonts[filename] = (font_image, font_config)
+            self.font_cache[filename] = (font_image, font_config)
         
-        return self.fonts[filename]
+        return self.font_cache[filename]
     
     def _grayscale_to_alpha(self, image):
         for x in xrange(image.get_width()):

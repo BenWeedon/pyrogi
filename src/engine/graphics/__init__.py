@@ -30,6 +30,11 @@ class Color(object):
         return (self.r, self.g, self.b)
     def to_RGBA_tuple(self):
         return (self.r, self.g, self.b, self.a)
+    
+    def __hash__(self):
+        return hash(self.to_RGBA_tuple())
+    def __eq__(self, other):
+        return self.r == other.r and self.g == other.g and self.b == other.b and self.a == other.a
 
 class Paint(object):
     def get_tile_color(self, absolute_position, relative_position):
