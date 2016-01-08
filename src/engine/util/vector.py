@@ -1,3 +1,5 @@
+from __future__ import division
+
 class Vec2(object):
     def __init__(self, x, y=None):
         if isinstance(x, tuple):
@@ -18,9 +20,9 @@ class Vec2(object):
         if isinstance(other, Vec2):
             return Vec2(self.x/other.x, self.y/other.y)
         else:
-            return Vec2(other/self.x, other/self.y)
+            return Vec2(self.x/other, self.y/other)
     def __rdiv__(self, other):
-        return self.__div__(1.0/other)
+        return Vec2(other/self.x, other/self.y)
     def __add__(self, other):
         return Vec2(self.x+other.x, self.y+other.y)
     def __sub__(self, other):
@@ -32,9 +34,6 @@ class Vec2(object):
         return isinstance(other, Vec2) and self.x == other.x and self.y == other.y
     def __ne__(self, other):
         return not self.__eq__(other)
-    
-    
-    
     
     def to_tuple(self):
         return (self.x, self.y)
