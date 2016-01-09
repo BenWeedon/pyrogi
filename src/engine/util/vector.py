@@ -3,11 +3,11 @@ from __future__ import division
 class Vec2(object):
     def __init__(self, x, y=None):
         if isinstance(x, tuple):
-            self.x = x[0]
-            self.y = x[1]
+            self.x = float(x[0])
+            self.y = float(x[1])
         else:
-            self.x = x
-            self.y = y
+            self.x = float(x)
+            self.y = float(y)
     
     def __mul__(self, other):
         if isinstance(other, Vec2):
