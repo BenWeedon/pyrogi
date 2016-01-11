@@ -59,7 +59,7 @@ class Button(UIElement):
     def __init__(self, screen, position, dimensions, text):
         super(Button, self).__init__(screen, position, dimensions)
         
-        self.add_rectangle(dimensions, '!', Color(0, 0, 0), Color(0, 0, 0))
+        self.add_rectangle(dimensions, ' ', Color(0, 0, 0), Color(0, 0, 0))
         
         self.text = text
         self.write_text(text)
