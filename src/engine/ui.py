@@ -1,4 +1,4 @@
-import random
+import types
 import engine
 from engine.backend import UIElementContainer
 from engine.graphics import Tile, Color, SolidPaint, Drawable
@@ -76,7 +76,7 @@ class Button(UIElement):
     def on_clicked(self, event):
         raise NotImplementedError()
     def set_on_clicked(self, func):
-        self.on_clicked = func
+        self.on_clicked = types.MethodType(func, self)
     
     def on_mouse_down(self, event):
         self._update_paints()
