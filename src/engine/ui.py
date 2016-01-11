@@ -99,17 +99,3 @@ class Button(UIElement):
             else:
                 self.bg_paint = self.base_paint
                 self.fg_paint = self.text_base_paint
-
-
-class TestUIElement(UIElement):
-    def __init__(self, screen, position, dimensions):
-        super(TestUIElement, self).__init__(screen, position, dimensions)
-        self.position = Vec2(random.randint(0, 5), random.randint(0, 5))
-        self.add_tile(Tile('ram', Color(255, 0, 0, 100), Color(0, 255, 0, 100)), Vec2(0, 0))
-    
-    def on_mouse_entered(self, event):
-        for tile in self.tiles:
-            tile[0].bg_color = Color(255, 255, 255)
-    def on_mouse_left(self, event):
-        for tile in self.tiles:
-            tile[0].bg_color = Color(0, 255, 0, 100)
