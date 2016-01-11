@@ -5,6 +5,8 @@ from engine.util.vector import Vec2
 class Graphics(object):
     def init_window(self, window_dimensions, tile_dimensions, caption):
         raise NotImplementedError()
+    def clear_screen(self):
+        raise NotImplementedError()
     def draw_tile(self, character, fg_color, bg_color):
         raise NotImplementedError()
 

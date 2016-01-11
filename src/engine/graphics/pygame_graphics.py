@@ -19,6 +19,9 @@ class PyGameGraphics(Graphics):
         self.tile_dimensions = tile_dimensions
         pygame.display.set_caption(caption)
     
+    def clear_screen(self):
+        self.screen.fill((0, 0, 0, 0))
+    
     def draw_tile(self, position, character, fg_color, bg_color):
         key = ('brogue.png', character, fg_color, bg_color)
         if key not in self.tile_cache:
