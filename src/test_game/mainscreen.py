@@ -7,9 +7,9 @@ class MainScreen(Screen):
     def __init__(self):
         super(MainScreen, self).__init__()
         
-        move_button = Button(self, Vec2(3, 2), Vec2(10, 1), 'Move me!!')
+        move_button = Button(self, Vec2(2, 2), Vec2(10, 1), 'Move me!!')
         def move(elt, event):
-            position = Vec2(random.randint(1, 5), random.randint(1, 5))
+            position = Vec2(random.randint(2, 5), random.randint(2, 5))
             elt.position = position
         move_button.set_on_clicked(move)
         self.add_child(move_button)
@@ -19,3 +19,9 @@ class MainScreen(Screen):
             self.remove_child(move_button)
         delete_button.set_on_clicked(delete)
         self.add_child(delete_button)
+        
+        delete_self_button = Button(self, Vec2(1, 1), Vec2(11, 1), 'Delete self')
+        def delete_self(elt, event):
+            self.remove_child(elt)
+        delete_self_button.set_on_clicked(delete_self)
+        self.add_child(delete_self_button)
