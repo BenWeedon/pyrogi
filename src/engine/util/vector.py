@@ -1,4 +1,5 @@
 from __future__ import division
+import math
 
 class Vec2(object):
     def __init__(self, x, y=None):
@@ -29,6 +30,20 @@ class Vec2(object):
         return self.__add__(-other)
     def __neg__(self):
         return self.__mul__(-1)
+    
+    def dot(self, other):
+        multiplied = self * other
+        return multiplied.x + multiplied.y
+    
+    def magnitude(self):
+        return math.sqrt(self.x*self.x + self.y*self.y)
+    
+    def normalized(self):
+        magnitude = self.magnitude()
+        if magnitude > 0:
+            return self.__div__(magnitude)
+        else:
+            raise ValueError('Cannot normalize a vector of magnitude zero.')
     
     def __eq__(self, other):
         return isinstance(other, Vec2) and self.x == other.x and self.y == other.y

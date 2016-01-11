@@ -1,4 +1,5 @@
 import unittest
+import math
 from engine.util.vector import Vec2
 
 class TestVec2(unittest.TestCase):
@@ -47,7 +48,7 @@ class TestVec2(unittest.TestCase):
         self.assertEqual(Vec2(3.2, 9)/1, Vec2(3.2, 9))
         
         self.assertAlmostEqual_(2/Vec2(4, -6.2), Vec2(0.5, -0.3225806))
-        self.assertEqual(Vec2(4, 6.2)/-2, Vec2(-2, -3.1))
+        self.assertAlmostEqual_(Vec2(4, 6.2)/-2.1, Vec2(-1.9047619, -2.952381))
     
     def test_addition(self):
         self.assertEqual(Vec2(0, 0)+Vec2(34.494, 2.292), Vec2(34.494, 2.292))
@@ -67,6 +68,44 @@ class TestVec2(unittest.TestCase):
         self.assertEqual(-Vec2(-1, 1), Vec2(1, -1))
         self.assertEqual(-Vec2(-2.34, 6), Vec2(2.34, -6))
         self.assertEqual(-Vec2(-3.6, -0.945), Vec2(3.6, 0.945))
+    
+    def test_dot_product(self):
+        self.assertEqual(Vec2(0, 0).dot(Vec2(0, 0)), 0)
+        self.assertEqual(Vec2(1, 1).dot(Vec2(0, 0)), 0)
+        self.assertEqual(Vec2(0, 0).dot(Vec2(1, 1)), 0)
+        
+        self.assertEqual(Vec2(1, 1).dot(Vec2(1, 1)), 2)
+        self.assertEqual(Vec2(-3, 2.5).dot(Vec2(6, -6)), -33)
+        self.assertEqual(Vec2(-3, -1.5).dot(Vec2(-2, -8)), 18)
+        self.assertEqual(Vec2(4, 0).dot(Vec2(-6, 11)), -24)
+    
+    def test_normalized(self):
+        self.assertRaisesRegexp(ValueError, 'Cannot normalize a vector of magnitude zero.', Vec2.normalized, Vec2(0, 0))
+        
+        self.assertEqual(Vec2(-135, 0).normalized(), Vec2(-1, 0))
+        self.assertEqual(Vec2(2345, 0).normalized(), Vec2(1, 0))
+        self.assertEqual(Vec2(0, -12000).normalized(), Vec2(0, -1))
+        self.assertEqual(Vec2(0, 2394).normalized(), Vec2(0, 1))
+        
+        self.assertAlmostEqual_(Vec2(1, 1).normalized(), Vec2(1/math.sqrt(2), 1/math.sqrt(2)))
+        self.assertAlmostEqual_(Vec2(-5, -2).normalized(), Vec2(-5/math.sqrt(29), -2/math.sqrt(29)))
+        self.assertAlmostEqual_(Vec2(7.4, -1.12).normalized(), Vec2(0.9887395, -0.1496471))
+        self.assertAlmostEqual_(Vec2(-3, 12).normalized(), Vec2(-1/math.sqrt(17), 4/math.sqrt(17)))
+    
+    def test_magnitude(self):
+        self.assertEqual(Vec2(0, 0).magnitude(), 0)
+        self.assertEqual(Vec2(1, 0).magnitude(), 1)
+        self.assertEqual(Vec2(0, 1).magnitude(), 1)
+        
+        self.assertEqual(Vec2(7, 0).magnitude(), 7)
+        self.assertEqual(Vec2(-164, 0).magnitude(), 164)
+        self.assertEqual(Vec2(0, 38294).magnitude(), 38294)
+        self.assertEqual(Vec2(0, -23.645).magnitude(), 23.645)
+        
+        self.assertEqual(Vec2(1, 1).magnitude(), math.sqrt(2))
+        self.assertEqual(Vec2(12, -16).magnitude(), 20)
+        self.assertAlmostEqual(Vec2(-4.7, 10.02).magnitude(), 11.0675381)
+        self.assertEqual(Vec2(20, 48).magnitude(), 52)
     
     def test_equals(self):
         self.assertTrue(Vec2(0, 0) == Vec2(0, 0))
