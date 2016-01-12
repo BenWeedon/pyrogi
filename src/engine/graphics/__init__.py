@@ -1,3 +1,4 @@
+import math
 from operator import attrgetter
 import engine
 from engine.util.vector import Vec2
@@ -80,11 +81,12 @@ class LinearGradientPaint(GradientPaint):
             int(round(self.color1.a + percent * (self.color2.a - self.color1.a))),
         )
     def _get_percent_along_projection(self, projection, p1_projection, p2_projection):
-        diff = max(p1_projection, p2_projection) - min(p1_projection, p2_projection)
-        raw_percent = (projection-min(p1_projection, p2_projection)) / diff
+        diff = p2_projection - p1_projection
+        raw_percent = (projection-p1_projection) / diff
         if self.is_cyclical:
             must_inverse = int(raw_percent) % 2 == 1
-            percent_before_inverse = raw_percent % 1 if raw_percent >= 0 else 1-(raw_percent%1)
+            fractional_part, unused_integer_part = math.modf(raw_percent)
+            percent_before_inverse = abs(fractional_part)
             return 1-percent_before_inverse if must_inverse else percent_before_inverse
         else:
             if raw_percent < 0:
@@ -119,7 +121,7 @@ class Drawable(object):
         if paint is not None:
             paint.tick(millis)
             for tile, offset in self.tiles:
-                color = paint.get_tile_color(self.position+offset, offset)
+                color = paint.get_tile_color(offset, self.position+offset)
                 if is_foreground:
                     tile.fg_color = color
                 else:

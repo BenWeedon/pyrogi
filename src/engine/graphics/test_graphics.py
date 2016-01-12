@@ -50,6 +50,19 @@ class TestPaints(unittest.TestCase):
         )
         
         self._run_linear_gradient_test(
+            Color(0, 0, 0, 0), Vec2(0, 0),
+            Color(255, 255, 255, 255), Vec2(10, 0),
+            Vec2(10.5, 0), Vec2(10.5, 0),
+            Color(242, 242, 242, 242), Color(255, 255, 255, 255), Color(242, 242, 242, 242), Color(255, 255, 255, 255)
+        )
+        self._run_linear_gradient_test(
+            Color(0, 0, 0, 0), Vec2(0, 0),
+            Color(255, 255, 255, 255), Vec2(3, 0),
+            Vec2(6, 0), Vec2(6, 0),
+            Color(0, 0, 0, 0), Color(255, 255, 255, 255), Color(0, 0, 0, 0), Color(255, 255, 255, 255)
+        )
+        
+        self._run_linear_gradient_test(
             Color(0, 0, 0, 0), Vec2(1, 6),
             Color(255, 255, 255, 255), Vec2(3, 17.2),
             Vec2(2, 15), Vec2(0.5, 5),
