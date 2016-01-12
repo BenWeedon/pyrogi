@@ -33,34 +33,34 @@ class TestVec2(unittest.TestCase):
         self.assertEqual(Vec2(0, 0)/Vec2(-12985, 18092.8201), Vec2(0, 0))
         self.assertRaises(ZeroDivisionError, Vec2.__div__, Vec2(-12985, 18092.8201), Vec2(0, 0))
         
-        self.assertVectorsEqual(Vec2(1, 1)/Vec2(3, 5.2), Vec2(0.3333333, 0.1923077))
+        self._assertVectorsEqual(Vec2(1, 1)/Vec2(3, 5.2), Vec2(0.3333333, 0.1923077))
         self.assertEqual(Vec2(3, 5.2)/Vec2(1, 1), Vec2(3, 5.2))
         
-        self.assertVectorsEqual(Vec2(1184.929, 4)/Vec2(2939.393, -87562.1705), Vec2(0.4031203, -0.000045681828))
-        self.assertVectorsEqual(Vec2(-2939.393, -87562.1705)/Vec2(1184.929, -4), Vec2(-2.48064901, 21890.542625))
+        self._assertVectorsEqual(Vec2(1184.929, 4)/Vec2(2939.393, -87562.1705), Vec2(0.4031203, -0.000045681828))
+        self._assertVectorsEqual(Vec2(-2939.393, -87562.1705)/Vec2(1184.929, -4), Vec2(-2.48064901, 21890.542625))
     
     def test_scalar_division(self):
         self.assertEqual(0/Vec2(3, 5.9392), Vec2(0, 0))
         self.assertRaises(ZeroDivisionError, Vec2.__div__, Vec2(3, 5.9392), 0)
         self.assertRaises(ZeroDivisionError, Vec2.__rdiv__, Vec2(0, 0), 3)
         
-        self.assertVectorsEqual(1/Vec2(3.2, 9), Vec2(0.3125, 0.1111111))
+        self._assertVectorsEqual(1/Vec2(3.2, 9), Vec2(0.3125, 0.1111111))
         self.assertEqual(Vec2(3.2, 9)/1, Vec2(3.2, 9))
         
-        self.assertVectorsEqual(2/Vec2(4, -6.2), Vec2(0.5, -0.3225806))
-        self.assertVectorsEqual(Vec2(4, 6.2)/-2.1, Vec2(-1.9047619, -2.952381))
+        self._assertVectorsEqual(2/Vec2(4, -6.2), Vec2(0.5, -0.3225806))
+        self._assertVectorsEqual(Vec2(4, 6.2)/-2.1, Vec2(-1.9047619, -2.952381))
     
     def test_addition(self):
         self.assertEqual(Vec2(0, 0)+Vec2(34.494, 2.292), Vec2(34.494, 2.292))
         self.assertEqual(Vec2(34.494, 2.292)+Vec2(0, 0), Vec2(34.494, 2.292))
         
-        self.assertVectorsEqual(Vec2(-3, -5.6)+Vec2(-8.54, -0.43), Vec2(-11.54, -6.03))
+        self._assertVectorsEqual(Vec2(-3, -5.6)+Vec2(-8.54, -0.43), Vec2(-11.54, -6.03))
     
     def test_subtraction(self):
         self.assertEqual(Vec2(0, 0)-Vec2(34.494, 2.292), Vec2(-34.494, -2.292))
         self.assertEqual(Vec2(34.494, 2.292)-Vec2(0, 0), Vec2(34.494, 2.292))
         
-        self.assertVectorsEqual(Vec2(4, 2.1)-Vec2(-6, 1.39), Vec2(10, 0.71))
+        self._assertVectorsEqual(Vec2(4, 2.1)-Vec2(-6, 1.39), Vec2(10, 0.71))
         self.assertEqual(Vec2(-5.2, -9.6)-Vec2(4, -2.3), Vec2(-9.2, -7.3))
     
     def test_negation(self):
@@ -87,10 +87,10 @@ class TestVec2(unittest.TestCase):
         self.assertEqual(Vec2(0, -12000).normalized(), Vec2(0, -1))
         self.assertEqual(Vec2(0, 2394).normalized(), Vec2(0, 1))
         
-        self.assertVectorsEqual(Vec2(1, 1).normalized(), Vec2(1/math.sqrt(2), 1/math.sqrt(2)))
-        self.assertVectorsEqual(Vec2(-5, -2).normalized(), Vec2(-5/math.sqrt(29), -2/math.sqrt(29)))
-        self.assertVectorsEqual(Vec2(7.4, -1.12).normalized(), Vec2(0.9887395, -0.1496471))
-        self.assertVectorsEqual(Vec2(-3, 12).normalized(), Vec2(-1/math.sqrt(17), 4/math.sqrt(17)))
+        self._assertVectorsEqual(Vec2(1, 1).normalized(), Vec2(1/math.sqrt(2), 1/math.sqrt(2)))
+        self._assertVectorsEqual(Vec2(-5, -2).normalized(), Vec2(-5/math.sqrt(29), -2/math.sqrt(29)))
+        self._assertVectorsEqual(Vec2(7.4, -1.12).normalized(), Vec2(0.9887395, -0.1496471))
+        self._assertVectorsEqual(Vec2(-3, 12).normalized(), Vec2(-1/math.sqrt(17), 4/math.sqrt(17)))
     
     def test_magnitude(self):
         self.assertEqual(Vec2(0, 0).magnitude(), 0)
@@ -127,6 +127,6 @@ class TestVec2(unittest.TestCase):
         self.assertEqual(Vec2(0, 0).to_tuple(), (0, 0))
         self.assertEqual(Vec2(-2.394, 7.00054).to_tuple(), (-2.394, 7.00054))
     
-    def assertVectorsEqual(self, vec1, vec2):
+    def _assertVectorsEqual(self, vec1, vec2):
         self.assertAlmostEqual(vec1.x, vec2.x)
         self.assertAlmostEqual(vec1.y, vec2.y)
