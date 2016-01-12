@@ -13,7 +13,7 @@ class MainScreen(Screen):
             position = Vec2(random.randint(2, 5), random.randint(2, 5))
             elt.position = position
         move_button.set_on_clicked(move)
-        move_button.base_paint = LinearGradientPaint(Color(0, 255, 0), Vec2(4, 0), Color(0, 100, 0), Vec2(-2, 0))
+        move_button.base_paint = LinearGradientPaint(Color(0, 255, 0, 255), Vec2(4, 0), Color(0, 255, 0, 0), Vec2(-2, 0))
         self.add_child(move_button)
         
         delete_button = Button(self, Vec2(0, 0), Vec2(6, 1), 'Delete')
