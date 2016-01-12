@@ -85,7 +85,7 @@ class LinearGradientPaint(GradientPaint):
         raw_percent = (projection-p1_projection) / diff
         if self.is_cyclical:
             must_inverse = int(raw_percent) % 2 == 1
-            fractional_part, unused_integer_part = math.modf(raw_percent)
+            fractional_part = math.modf(raw_percent)[0]
             percent_before_inverse = abs(fractional_part)
             return 1-percent_before_inverse if must_inverse else percent_before_inverse
         else:
