@@ -7,17 +7,17 @@ class TestColor(unittest.TestCase):
         self.assertEqual(Color(1, 2, 3, 4).to_RGB_tuple(), (1, 2, 3))
         self.assertEqual(Color(1, 2, 3, 4).to_RGBA_tuple(), (1, 2, 3, 4))
         self.assertEqual(Color(1, 2, 3).to_RGBA_tuple(), (1, 2, 3, 255))
-    
+
     def test_equals(self):
         self.assertEqual(Color(1, 2, 3, 4), Color(1, 2, 3, 4))
         self.assertEqual(Color(1, 2, 3), Color(1, 2, 3, 255))
-    
+
     def test_initialization_errors(self):
         self.assertRaisesRegexp(ValueError, "A Color object cannot contain the float value '1.1'.", Color, 1.1, 2, 3, 4)
         self.assertRaisesRegexp(ValueError, "A Color object cannot contain the float value '2.02'.", Color, 1, 2.02, 3, 4)
         self.assertRaisesRegexp(ValueError, "A Color object cannot contain the float value '3.7'.", Color, 1, 2, 3.7, 4)
         self.assertRaisesRegexp(ValueError, "A Color object cannot contain the float value '4.0'.", Color, 1, 2, 3, 4.0)
-        
+
         self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, -1, 2, 3, 4)
         self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 256, 2, 3, 4)
         self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, -38, 3, 4)
@@ -48,7 +48,7 @@ class TestPaints(unittest.TestCase):
             Vec2(8, 0), Vec2(8, 0),
             Color(204, 204, 204, 204), Color(204, 204, 204, 204), Color(204, 204, 204, 204), Color(204, 204, 204, 204)
         )
-        
+
         self._run_linear_gradient_test(
             Color(0, 0, 0, 0), Vec2(0, 0),
             Color(255, 255, 255, 255), Vec2(10, 0),
@@ -61,7 +61,7 @@ class TestPaints(unittest.TestCase):
             Vec2(6, 0), Vec2(6, 0),
             Color(0, 0, 0, 0), Color(255, 255, 255, 255), Color(0, 0, 0, 0), Color(255, 255, 255, 255)
         )
-        
+
         self._run_linear_gradient_test(
             Color(0, 0, 0, 0), Vec2(1, 6),
             Color(255, 255, 255, 255), Vec2(3, 17.2),
@@ -86,7 +86,7 @@ class TestPaints(unittest.TestCase):
             Vec2(162.7, -40.7), Vec2(-201.5, 195.2),
             Color(139, 139, 139, 139), Color(255, 255, 255, 255), Color(3, 3, 3, 3), Color(0, 0, 0, 0)
         )
-    
+
     def _run_linear_gradient_test(
             self, color1, position1, color2, position2,
             relative_position, absolute_position,
@@ -101,7 +101,7 @@ class TestPaints(unittest.TestCase):
             # test positions/colors in reverse order
             gradient = LinearGradientPaint(color2, position2, color1, position1, is_cyclical, is_relative)
             self._assertColorEqual(gradient.get_tile_color(relative_position, absolute_position), expected_color)
-    
+
     def _assertColorEqual(self, color1, color2):
         self.assertAlmostEqual(color1.r, color2.r)
         self.assertAlmostEqual(color1.g, color2.g)

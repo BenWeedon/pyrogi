@@ -17,7 +17,7 @@ class Tile(object):
         self.character = character
         self.fg_color = fg_color
         self.bg_color = bg_color
-    
+
     def draw(self, g, position):
         g.draw_tile(position, self.character, self.fg_color, self.bg_color)
 
@@ -33,12 +33,12 @@ class Color(object):
         self.g = g
         self.b = b
         self.a = a
-    
+
     def to_RGB_tuple(self):
         return (self.r, self.g, self.b)
     def to_RGBA_tuple(self):
         return (self.r, self.g, self.b, self.a)
-    
+
     def __hash__(self):
         return hash(self.to_RGBA_tuple())
     def __eq__(self, other):
@@ -103,7 +103,7 @@ class Drawable(object):
         self.fg_paint = fg_paint
         self.bg_paint = bg_paint
         self.tiles = []
-    
+
     def add_tile(self, tile, offset):
         self.tiles.append((tile, offset))
         # sort in top-to-bottom, left-to-right text order
@@ -112,11 +112,11 @@ class Drawable(object):
         for x in xrange(dimensions.x):
             for y in xrange(dimensions.y):
                 self.add_tile(Tile(character, fg_color, bg_color), Vec2(x, y))
-    
+
     def update_drawable(self, millis):
         self._update_paint(millis, self.fg_paint, True)
         self._update_paint(millis, self.bg_paint, False)
-    
+
     def _update_paint(self, millis, paint, is_foreground):
         if paint is not None:
             paint.tick(millis)
@@ -126,18 +126,18 @@ class Drawable(object):
                     tile.fg_color = color
                 else:
                     tile.bg_color = color
-    
+
     def draw(self, g):
         for tile, offset in self.tiles:
             tile.draw(g, self.position+offset)
-    
+
     def contains_position(self, position):
         for tile, offset in self.tiles:
             tile_position = self.position + offset
             if tile_position == position:
                 return True
         return False
-    
+
     def write_text(self, text):
         characters = engine.parse_text_into_characters(text)
         for tile, offset in self.tiles:

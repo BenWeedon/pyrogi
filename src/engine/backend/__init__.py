@@ -8,16 +8,16 @@ class Backend(object):
         engine.tile_dimensions = tile_dimensions
         self.caption = caption
         self.screens = [starting_screen]
-    
+
     def run(self):
         raise NotImplementedError()
-    
+
     def on_tick(self, millis):
         self.get_current_screen().on_tick(millis)
-    
+
     def on_draw(self, g):
         self.get_current_screen().on_draw(g)
-    
+
     def get_current_screen(self):
         return self.screens[-1]
     def set_screen(self, screen):
@@ -25,7 +25,7 @@ class Backend(object):
     def go_back_n_screens(self, n):
         for i in xrange(n):
             self.screens.pop()
-    
+
     def handle_key_down(self, event):
         self.get_current_screen().handle_key_down(event)
     def handle_key_up(self, event):
@@ -45,22 +45,22 @@ class UIElementContainer(Drawable):
     def __init__(self, position):
         super(UIElementContainer, self).__init__(position)
         self.ui_elements = []
-    
+
     def on_tick(self, millis):
         for elt in self.ui_elements[:]:
             elt.on_tick(millis)
             elt.update_drawable(millis)
-    
+
     def on_draw(self, g):
         self.draw(g)
         for elt in self.ui_elements[:]:
             elt.on_draw(g)
-    
+
     def add_child(self, child):
         self.ui_elements.append(child)
     def remove_child(self, child):
         self.ui_elements.remove(child)
-    
+
     def handle_key_down(self, event):
         self.on_key_down(event)
         for elt in self.ui_elements[:]:
@@ -85,7 +85,7 @@ class UIElementContainer(Drawable):
         self.on_mouse_wheel_scrolled(event)
         for elt in self.ui_elements[:]:
             elt.handle_mouse_wheel_scrolled(event)
-    
+
     def on_key_down(self, event):
         pass
     def on_key_up(self, event):

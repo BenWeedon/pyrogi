@@ -14,7 +14,7 @@ class PyGameBackend(Backend):
             caption, starting_screen
         )
         pygame.init()
-    
+
     def run(self):
         clock = pygame.time.Clock()
         g = PyGameGraphics()
@@ -26,17 +26,17 @@ class PyGameBackend(Backend):
                 break
             else:
                 self._handle_events(pygame.event.get())
-            
+
             fps = clock.get_fps()
             pygame.display.set_caption('FPS: ' + str(fps))
-            
+
             millis = clock.tick(TARGET_FRAMERATE)
             self.on_tick(millis)
-            
+
             g.clear_screen()
             self.on_draw(g)
             pygame.display.update()
-    
+
     def _handle_events(self, events):
         for event in events:
             if event.type == pygame.KEYDOWN:

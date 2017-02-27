@@ -9,7 +9,7 @@ class Vec2(object):
         else:
             self.x = x
             self.y = y
-    
+
     def __mul__(self, other):
         if isinstance(other, Vec2):
             return Vec2(self.x*other.x, self.y*other.y)
@@ -30,28 +30,28 @@ class Vec2(object):
         return self.__add__(-other)
     def __neg__(self):
         return self.__mul__(-1)
-    
+
     def dot(self, other):
         multiplied = self * other
         return multiplied.x + multiplied.y
-    
+
     def magnitude(self):
         return math.sqrt(self.x*self.x + self.y*self.y)
-    
+
     def normalized(self):
         magnitude = self.magnitude()
         if magnitude > 0:
             return self.__div__(magnitude)
         else:
             raise ValueError('Cannot normalize a vector of magnitude zero.')
-    
+
     def __eq__(self, other):
         return isinstance(other, Vec2) and self.x == other.x and self.y == other.y
     def __ne__(self, other):
         return not self.__eq__(other)
-    
+
     def to_tuple(self):
         return (self.x, self.y)
-    
+
     def __str__(self):
         return str(self.to_tuple())

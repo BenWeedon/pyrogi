@@ -17,7 +17,7 @@ def parse_text_into_characters(text):
             characters.append(ch)
         else:
             group.append(ch)
-    
+
     for ch in text:
         if ch == '\\':
             if is_escaping:
