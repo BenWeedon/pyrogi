@@ -29,9 +29,9 @@ class TestVec2(unittest.TestCase):
         self.assertEqual(2.3939*Vec2(-0.245, 862.254), Vec2(-0.5865055, 2064.1498506))
         self.assertEqual(Vec2(-0.245, 862.254)*2.3939, Vec2(-0.5865055, 2064.1498506))
 
-    def test_vector_division(self):
+    def test_vector_true_division(self):
         self.assertEqual(Vec2(0, 0)/Vec2(-12985, 18092.8201), Vec2(0, 0))
-        self.assertRaises(ZeroDivisionError, Vec2.__div__, Vec2(-12985, 18092.8201), Vec2(0, 0))
+        self.assertRaises(ZeroDivisionError, Vec2.__truediv__, Vec2(-12985, 18092.8201), Vec2(0, 0))
 
         self._assertVectorsEqual(Vec2(1, 1)/Vec2(3, 5.2), Vec2(0.3333333, 0.1923077))
         self.assertEqual(Vec2(3, 5.2)/Vec2(1, 1), Vec2(3, 5.2))
@@ -39,16 +39,37 @@ class TestVec2(unittest.TestCase):
         self._assertVectorsEqual(Vec2(1184.929, 4)/Vec2(2939.393, -87562.1705), Vec2(0.4031203, -0.000045681828))
         self._assertVectorsEqual(Vec2(-2939.393, -87562.1705)/Vec2(1184.929, -4), Vec2(-2.48064901, 21890.542625))
 
-    def test_scalar_division(self):
+    def test_vector_floor_division(self):
+        self.assertEqual(Vec2(0, 0)//Vec2(-12985, 18092.8201), Vec2(0, 0))
+        self.assertRaises(ZeroDivisionError, Vec2.__floordiv__, Vec2(-12985, 18092.8201), Vec2(0, 0))
+
+        self.assertEqual(Vec2(1, 1)//Vec2(3, 5.2), Vec2(0, 0))
+        self.assertEqual(Vec2(3, 5.2)//Vec2(1, 1), Vec2(3, 5))
+
+        self.assertEqual(Vec2(1184.929, 4)//Vec2(2939.393, -87562.1705), Vec2(0, -1))
+        self.assertEqual(Vec2(-2939.393, -87562.1705)//Vec2(1184.929, -4), Vec2(-3, 21890))
+
+    def test_scalar_true_division(self):
         self.assertEqual(0/Vec2(3, 5.9392), Vec2(0, 0))
-        self.assertRaises(ZeroDivisionError, Vec2.__div__, Vec2(3, 5.9392), 0)
-        self.assertRaises(ZeroDivisionError, Vec2.__rdiv__, Vec2(0, 0), 3)
+        self.assertRaises(ZeroDivisionError, Vec2.__truediv__, Vec2(3, 5.9392), 0)
+        self.assertRaises(ZeroDivisionError, Vec2.__rtruediv__, Vec2(0, 0), 3)
 
         self._assertVectorsEqual(1/Vec2(3.2, 9), Vec2(0.3125, 0.1111111))
         self.assertEqual(Vec2(3.2, 9)/1, Vec2(3.2, 9))
 
         self._assertVectorsEqual(2/Vec2(4, -6.2), Vec2(0.5, -0.3225806))
         self._assertVectorsEqual(Vec2(4, 6.2)/-2.1, Vec2(-1.9047619, -2.952381))
+
+    def test_scalar_floor_division(self):
+        self.assertEqual(0//Vec2(3, 5.9392), Vec2(0, 0))
+        self.assertRaises(ZeroDivisionError, Vec2.__floordiv__, Vec2(3, 5.9392), 0)
+        self.assertRaises(ZeroDivisionError, Vec2.__rfloordiv__, Vec2(0, 0), 3)
+
+        self.assertEqual(1//Vec2(3.2, 9), Vec2(0, 0))
+        self.assertEqual(Vec2(3.2, 9)//1, Vec2(3, 9))
+
+        self.assertEqual(2//Vec2(4, -6.2), Vec2(0, -1))
+        self.assertEqual(Vec2(4, 6.2)//-2.1, Vec2(-2, -3))
 
     def test_addition(self):
         self.assertEqual(Vec2(0, 0)+Vec2(34.494, 2.292), Vec2(34.494, 2.292))
@@ -80,7 +101,7 @@ class TestVec2(unittest.TestCase):
         self.assertEqual(Vec2(4, 0).dot(Vec2(-6, 11)), -24)
 
     def test_normalized(self):
-        self.assertRaisesRegexp(ValueError, 'Cannot normalize a vector of magnitude zero.', Vec2.normalized, Vec2(0, 0))
+        self.assertRaisesRegex(ValueError, 'Cannot normalize a vector of magnitude zero.', Vec2.normalized, Vec2(0, 0))
 
         self.assertEqual(Vec2(-135, 0).normalized(), Vec2(-1, 0))
         self.assertEqual(Vec2(2345, 0).normalized(), Vec2(1, 0))

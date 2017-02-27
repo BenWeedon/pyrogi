@@ -23,7 +23,7 @@ class Backend(object):
     def set_screen(self, screen):
         self.screens.append(screen)
     def go_back_n_screens(self, n):
-        for i in xrange(n):
+        for i in range(n):
             self.screens.pop()
 
     def handle_key_down(self, event):

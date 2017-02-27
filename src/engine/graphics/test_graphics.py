@@ -13,19 +13,19 @@ class TestColor(unittest.TestCase):
         self.assertEqual(Color(1, 2, 3), Color(1, 2, 3, 255))
 
     def test_initialization_errors(self):
-        self.assertRaisesRegexp(ValueError, "A Color object cannot contain the float value '1.1'.", Color, 1.1, 2, 3, 4)
-        self.assertRaisesRegexp(ValueError, "A Color object cannot contain the float value '2.02'.", Color, 1, 2.02, 3, 4)
-        self.assertRaisesRegexp(ValueError, "A Color object cannot contain the float value '3.7'.", Color, 1, 2, 3.7, 4)
-        self.assertRaisesRegexp(ValueError, "A Color object cannot contain the float value '4.0'.", Color, 1, 2, 3, 4.0)
+        self.assertRaisesRegex(ValueError, "A Color object cannot contain the float value '1.1'.", Color, 1.1, 2, 3, 4)
+        self.assertRaisesRegex(ValueError, "A Color object cannot contain the float value '2.02'.", Color, 1, 2.02, 3, 4)
+        self.assertRaisesRegex(ValueError, "A Color object cannot contain the float value '3.7'.", Color, 1, 2, 3.7, 4)
+        self.assertRaisesRegex(ValueError, "A Color object cannot contain the float value '4.0'.", Color, 1, 2, 3, 4.0)
 
-        self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, -1, 2, 3, 4)
-        self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 256, 2, 3, 4)
-        self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, -38, 3, 4)
-        self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, 300, 3, 4)
-        self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, 2, -3, 4)
-        self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, 2, 256, 4)
-        self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, 2, 3, -1)
-        self.assertRaisesRegexp(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, 2, 3, 500)
+        self.assertRaisesRegex(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, -1, 2, 3, 4)
+        self.assertRaisesRegex(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 256, 2, 3, 4)
+        self.assertRaisesRegex(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, -38, 3, 4)
+        self.assertRaisesRegex(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, 300, 3, 4)
+        self.assertRaisesRegex(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, 2, -3, 4)
+        self.assertRaisesRegex(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, 2, 256, 4)
+        self.assertRaisesRegex(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, 2, 3, -1)
+        self.assertRaisesRegex(ValueError, 'The parameters to a Color object must be in the range \\[0, 255\\].', Color, 1, 2, 3, 500)
 
 
 class TestPaints(unittest.TestCase):

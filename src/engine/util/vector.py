@@ -17,13 +17,20 @@ class Vec2(object):
             return Vec2(other*self.x, other*self.y)
     def __rmul__(self, other):
         return self.__mul__(other)
-    def __div__(self, other):
+    def __truediv__(self, other):
         if isinstance(other, Vec2):
             return Vec2(self.x/other.x, self.y/other.y)
         else:
             return Vec2(self.x/other, self.y/other)
-    def __rdiv__(self, other):
+    def __rtruediv__(self, other):
         return Vec2(other/self.x, other/self.y)
+    def __floordiv__(self, other):
+        if isinstance(other, Vec2):
+            return Vec2(self.x//other.x, self.y//other.y)
+        else:
+            return Vec2(self.x//other, self.y//other)
+    def __rfloordiv__(self, other):
+        return Vec2(other//self.x, other//self.y)
     def __add__(self, other):
         return Vec2(self.x+other.x, self.y+other.y)
     def __sub__(self, other):
@@ -41,7 +48,7 @@ class Vec2(object):
     def normalized(self):
         magnitude = self.magnitude()
         if magnitude > 0:
-            return self.__div__(magnitude)
+            return self.__truediv__(magnitude)
         else:
             raise ValueError('Cannot normalize a vector of magnitude zero.')
 

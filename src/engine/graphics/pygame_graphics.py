@@ -44,8 +44,8 @@ class PyGameGraphics(Graphics):
         return self.font_cache[filename]
 
     def _grayscale_to_alpha(self, image):
-        for x in xrange(image.get_width()):
-            for y in xrange(image.get_height()):
+        for x in range(image.get_width()):
+            for y in range(image.get_height()):
                 color = image.get_at((x, y))
                 image.set_at((x, y), (255, 255, 255, color.r))
         return image

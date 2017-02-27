@@ -109,8 +109,8 @@ class Drawable(object):
         # sort in top-to-bottom, left-to-right text order
         self.tiles.sort(key=lambda pair: attrgetter('y', 'x')(pair[1]))
     def add_rectangle(self, dimensions, character, fg_color, bg_color):
-        for x in xrange(dimensions.x):
-            for y in xrange(dimensions.y):
+        for x in range(dimensions.x):
+            for y in range(dimensions.y):
                 self.add_tile(Tile(character, fg_color, bg_color), Vec2(x, y))
 
     def update_drawable(self, millis):
