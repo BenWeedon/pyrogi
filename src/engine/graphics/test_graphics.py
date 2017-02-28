@@ -63,6 +63,19 @@ class TestPaints(unittest.TestCase):
         )
 
         self._run_linear_gradient_test(
+            Color(87, 105, 202, 7), Vec2(0, 0),
+            Color(230, 188, 12, 38), Vec2(0, 10),
+            Vec2(0, 5), Vec2(0, -5),
+            Color(158, 146, 107, 22), Color(158, 146, 107, 22), Color(158, 146, 107, 22), Color(87, 105, 202, 7)
+        )
+        self._run_linear_gradient_test(
+            Color(99, 180, 39, 222), Vec2(0, -5),
+            Color(0, 60, 120, 205), Vec2(0, 5),
+            Vec2(-2, 3), Vec2(193, -7),
+            Color(20, 84, 104, 208), Color(20, 84, 104, 208), Color(79, 156, 55, 219), Color(99, 180, 39, 222)
+        )
+
+        self._run_linear_gradient_test(
             Color(0, 0, 0, 0), Vec2(1, 6),
             Color(255, 255, 255, 255), Vec2(3, 17.2),
             Vec2(2, 15), Vec2(0.5, 5),
@@ -87,6 +100,31 @@ class TestPaints(unittest.TestCase):
             Color(139, 139, 139, 139), Color(255, 255, 255, 255), Color(3, 3, 3, 3), Color(0, 0, 0, 0)
         )
 
+        self._run_linear_gradient_test(
+            Color(250, 29, 1, 167), Vec2(-7, 2),
+            Color(88, 44, 222, 111), Vec2(4, 17.9),
+            Vec2(28.8, -193.3), Vec2(-33.9, -2),
+            Color(129, 40, 166, 125), Color(250, 29, 1, 167), Color(94, 43, 214, 113), Color(250, 29, 1, 167)
+        )
+        self._run_linear_gradient_test(
+            Color(3, 7, 159, 209), Vec2(-7, 2),
+            Color(109, 0, 200, 183), Vec2(4, -10.4),
+            Vec2(3.4, 7), Vec2(-8.3, -17),
+            Color(23, 6, 167, 204), Color(23, 6, 167, 204), Color(88, 1, 192, 188), Color(88, 1, 192, 188)
+        )
+        self._run_linear_gradient_test(
+            Color(67, 29, 252, 67), Vec2(-7, 2),
+            Color(90, 174, 39, 105), Vec2(-20.3, 12),
+            Vec2(-30, 200.5), Vec2(28.8, -77.7),
+            Color(73, 69, 194, 77), Color(90, 174, 39, 105), Color(81, 116, 125, 90), Color(67, 29, 252, 67)
+        )
+        self._run_linear_gradient_test(
+            Color(29, 189, 75, 253), Vec2(-7, 2),
+            Color(109, 0, 200, 183), Vec2(-20.3, -10.4),
+            Vec2(-100, 0.4), Vec2(2.3, 23),
+            Color(45, 151, 100, 239), Color(109, 0, 200, 183), Color(96, 31, 180, 194), Color(29, 189, 75, 253)
+        )
+
     def _run_linear_gradient_test(
             self, color1, position1, color2, position2,
             relative_position, absolute_position,
@@ -97,13 +135,13 @@ class TestPaints(unittest.TestCase):
             is_relative = pair[1][1]
             # test positions/colors in given order
             gradient = LinearGradientPaint(color1, position1, color2, position2, is_cyclical, is_relative)
-            self._assertColorEqual(gradient.get_tile_color(relative_position, absolute_position), expected_color)
+            self._assertColorsEqual(gradient.get_tile_color(relative_position, absolute_position), expected_color)
             # test positions/colors in reverse order
             gradient = LinearGradientPaint(color2, position2, color1, position1, is_cyclical, is_relative)
-            self._assertColorEqual(gradient.get_tile_color(relative_position, absolute_position), expected_color)
+            self._assertColorsEqual(gradient.get_tile_color(relative_position, absolute_position), expected_color)
 
-    def _assertColorEqual(self, color1, color2):
-        self.assertAlmostEqual(color1.r, color2.r)
-        self.assertAlmostEqual(color1.g, color2.g)
-        self.assertAlmostEqual(color1.b, color2.b)
-        self.assertAlmostEqual(color1.a, color2.a)
+    def _assertColorsEqual(self, color1, color2):
+        self.assertEqual(color1.r, color2.r)
+        self.assertEqual(color1.g, color2.g)
+        self.assertEqual(color1.b, color2.b)
+        self.assertEqual(color1.a, color2.a)
