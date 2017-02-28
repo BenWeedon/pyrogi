@@ -8,7 +8,7 @@ class MainScreen(Screen):
     def __init__(self):
         super(MainScreen, self).__init__()
 
-        move_button = Button(self, Vec2(2, 2), Vec2(10, 1), 'Move me!!')
+        move_button = Button(self, Vec2(2, 2), Vec2(10, 3), '          Move me!!')
         def move(elt, event):
             position = Vec2(random.randint(2, 5), random.randint(2, 5))
             elt.position = position
