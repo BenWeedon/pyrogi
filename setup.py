@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 def get_readme_text():
     with open('README.rst') as f:
@@ -15,7 +15,7 @@ setup(
     author = 'Ben Weedon',
     author_email = 'ben.weedon@outlook.com',
     url = 'https://github.com/BenWeedon/pyrogi',
-    download_url = 'https://github.com/BenWeedon/pyrogi/releases/download/v0.1.0/pyrogi-0.1.0.tar.gz',
+    download_url = 'https://github.com/BenWeedon/pyrogi/archive/v0.1.0.tar.gz',
     keywords = ['game', 'engine', 'game-engine', 'roguelike', 'ascii'],
     classifiers = [],
 )
