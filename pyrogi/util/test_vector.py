@@ -1,6 +1,6 @@
 import unittest
 import math
-from engine.util.vector import Vec2
+from pyrogi.util.vector import Vec2
 
 class TestVec2(unittest.TestCase):
     def test_init(self):

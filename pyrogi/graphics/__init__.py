@@ -1,7 +1,7 @@
 import math
 from operator import attrgetter
-import engine
-from engine.util.vector import Vec2
+import pyrogi
+from pyrogi.util.vector import Vec2
 
 class Graphics(object):
     def init_window(self, window_dimensions, tile_dimensions, caption):
@@ -43,6 +43,7 @@ class Color(object):
         return hash(self.to_RGBA_tuple())
     def __eq__(self, other):
         return self.r == other.r and self.g == other.g and self.b == other.b and self.a == other.a
+
 
 class Paint(object):
     def get_tile_color(self, absolute_position, relative_position):
@@ -139,7 +140,7 @@ class Drawable(object):
         return False
 
     def write_text(self, text):
-        characters = engine.parse_text_into_characters(text)
+        characters = pyrogi.parse_text_into_characters(text)
         for tile, offset in self.tiles:
             if len(characters) == 0:
                 break

@@ -1,9 +1,9 @@
 import pygame
-import engine
-from engine.graphics.pygame_graphics import PyGameGraphics
-from engine.backend import Backend
-from engine.events import KeyDownEvent, KeyUpEvent, MouseMovedEvent, MouseButtonDownEvent, MouseButtonUpEvent, MouseWheelScrolledEvent
-from engine.util.vector import Vec2
+import pyrogi
+from pyrogi.graphics.pygame_graphics import PyGameGraphics
+from pyrogi.backend import Backend
+from pyrogi.events import KeyDownEvent, KeyUpEvent, MouseMovedEvent, MouseButtonDownEvent, MouseButtonUpEvent, MouseWheelScrolledEvent
+from pyrogi.util.vector import Vec2
 
 TARGET_FRAMERATE = 60
 
@@ -19,7 +19,7 @@ class PyGameBackend(Backend):
         clock = pygame.time.Clock()
         g = PyGameGraphics()
         g.init_window(
-            engine.window_dimensions, engine.tile_dimensions, self.caption
+            pyrogi.window_dimensions, pyrogi.tile_dimensions, self.caption
         )
         while True:
             if pygame.event.peek(pygame.QUIT):
@@ -46,9 +46,9 @@ class PyGameBackend(Backend):
             elif event.type == pygame.MOUSEMOTION:
                 self.handle_mouse_moved(MouseMovedEvent(event.pos, event.rel, event.buttons))
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == engine.events.SCROLL_WHEEL_UP:
+                if event.button == pyrogi.events.SCROLL_WHEEL_UP:
                     self.handle_mouse_wheel_scrolled(MouseWheelScrolledEvent(event.pos, 1))
-                elif event.button == engine.events.SCROLL_WHEEL_DOWN:
+                elif event.button == pyrogi.events.SCROLL_WHEEL_DOWN:
                     self.handle_mouse_wheel_scrolled(MouseWheelScrolledEvent(event.pos, -1))
                 else:
                     self.handle_mouse_button_down(MouseButtonDownEvent(event.pos, event.button))

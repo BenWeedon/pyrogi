@@ -1,6 +1,6 @@
 import unittest
-from engine.graphics import Color, LinearGradientPaint
-from engine.util.vector import Vec2
+from pyrogi.graphics import Color, LinearGradientPaint
+from pyrogi.util.vector import Vec2
 
 class TestColor(unittest.TestCase):
     def test_to_tuple(self):

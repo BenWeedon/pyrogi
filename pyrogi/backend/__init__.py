@@ -1,11 +1,11 @@
-import engine
-from engine.graphics import Tile, Color, Drawable
-from engine.util.vector import Vec2
+import pyrogi
+from pyrogi.graphics import Tile, Color, Drawable
+from pyrogi.util.vector import Vec2
 
 class Backend(object):
     def __init__(self, window_dimensions, tile_dimensions, caption, starting_screen):
-        engine.window_dimensions = window_dimensions
-        engine.tile_dimensions = tile_dimensions
+        pyrogi.window_dimensions = window_dimensions
+        pyrogi.tile_dimensions = tile_dimensions
         self.caption = caption
         self.screens = [starting_screen]
 
@@ -31,7 +31,7 @@ class Backend(object):
     def handle_key_up(self, event):
         self.get_current_screen().handle_key_up(event)
     def handle_mouse_moved(self, event):
-        engine.mouse_position = event.position
+        pyrogi.mouse_position = event.position
         self.get_current_screen().handle_mouse_moved(event)
     def handle_mouse_button_down(self, event):
         self.get_current_screen().handle_mouse_button_down(event)

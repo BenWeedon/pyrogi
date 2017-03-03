@@ -1,6 +1,6 @@
 import math
-import engine
-from engine.util.vector import Vec2
+import pyrogi
+from pyrogi.util.vector import Vec2
 
 LEFT_BUTTON = 1
 MIDDLE_BUTTON = 2
@@ -9,7 +9,7 @@ SCROLL_WHEEL_UP = 4
 SCROLL_WHEEL_DOWN = 5
 
 def pixel_position_to_tile_position(position):
-    return Vec2(math.floor(position.x/engine.tile_dimensions.x), math.floor(position.y/engine.tile_dimensions.y))
+    return Vec2(math.floor(position.x/pyrogi.tile_dimensions.x), math.floor(position.y/pyrogi.tile_dimensions.y))
 
 class Event(object):
     pass

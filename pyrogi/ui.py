@@ -1,8 +1,8 @@
 import types
-import engine
-from engine.backend import UIElementContainer
-from engine.graphics import Tile, Color, SolidPaint, Drawable
-from engine.util.vector import Vec2
+import pyrogi
+from pyrogi.backend import UIElementContainer
+from pyrogi.graphics import Tile, Color, SolidPaint, Drawable
+from pyrogi.util.vector import Vec2
 
 class UIElement(UIElementContainer):
     def __init__(self, screen, position, dimensions):
@@ -93,7 +93,7 @@ class Button(UIElement):
             self.bg_paint = self.click_paint
             self.fg_paint = self.text_click_paint
         else:
-            if self.contains_position(engine.mouse_position):
+            if self.contains_position(pyrogi.mouse_position):
                 self.bg_paint = self.hover_paint
                 self.fg_paint = self.text_hover_paint
             else:

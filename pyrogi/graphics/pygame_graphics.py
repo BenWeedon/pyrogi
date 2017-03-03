@@ -1,9 +1,9 @@
 import os.path
 import json
 import pygame
-from engine import FONT_PATH, FONT_CONFIG_EXTENSION
-from engine.graphics import Graphics, Color
-from engine.util.vector import Vec2
+from pyrogi import FONT_PATH, FONT_CONFIG_EXTENSION
+from pyrogi.graphics import Graphics, Color
+from pyrogi.util.vector import Vec2
 
 GRAYSCALE_FONT_TYPE = 'grayscale'
 ALPHA_FONT_TYPE = 'alpha'

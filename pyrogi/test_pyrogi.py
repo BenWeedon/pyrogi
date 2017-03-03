@@ -1,5 +1,5 @@
 import unittest
-from engine import parse_text_into_characters
+from pyrogi import parse_text_into_characters
 
 class TestParseTextIntoCharacters(unittest.TestCase):
     def test_plain_characters(self):

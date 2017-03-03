@@ -1,11 +1,11 @@
 import unittest
-import engine
-from engine.util.vector import Vec2
-from engine.events import pixel_position_to_tile_position
+import pyrogi
+from pyrogi.util.vector import Vec2
+from pyrogi.events import pixel_position_to_tile_position
 
 class TestPixelToTileConversion(unittest.TestCase):
     def setUp(self):
-        engine.tile_dimensions = Vec2(2, 5)
+        pyrogi.tile_dimensions = Vec2(2, 5)
 
     def test_pixel_position_to_tile_position(self):
         self.assertEqual(pixel_position_to_tile_position(Vec2(0, 0)), Vec2(0, 0))
