@@ -8,7 +8,7 @@ setup(
     name = 'pyrogi',
     packages = find_packages(),
     install_requires = ['pygame'],
-    version = '0.1.0',
+    version = '0.1.1',
     description = 'A feature-rich roguelike game engine focused on ease of development and beauty through text graphics.',
     long_description = get_readme_text(),
     license = 'GPLv3',
@@ -17,5 +17,12 @@ setup(
     url = 'https://github.com/BenWeedon/pyrogi',
     download_url = 'https://github.com/BenWeedon/pyrogi/archive/v0.1.0.tar.gz',
     keywords = ['game', 'engine', 'game-engine', 'roguelike', 'ascii'],
-    classifiers = [],
+    classifiers = [
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+    ],
 )
