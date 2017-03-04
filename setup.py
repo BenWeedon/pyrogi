@@ -8,7 +8,7 @@ setup(
     name = 'pyrogi',
     packages = find_packages(),
     install_requires = ['pygame'],
-    version = '0.1.1',
+    version = '0.1.2',
     description = 'A feature-rich roguelike game engine focused on ease of development and beauty through text graphics.',
     long_description = get_readme_text(),
     license = 'GPLv3',
@@ -24,5 +24,10 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Topic :: Games/Entertainment',
     ],
 )
