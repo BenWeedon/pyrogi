@@ -7,6 +7,9 @@ pyrogi
 .. image:: https://travis-ci.org/BenWeedon/pyrogi.svg?branch=master
     :target: https://travis-ci.org/BenWeedon/pyrogi
     :alt: Test Status
+.. image:: https://coveralls.io/repos/github/BenWeedon/pyrogi/badge.svg?branch=master
+    :target: https://coveralls.io/github/BenWeedon/pyrogi?branch=master
+    :alt: Test Coverage
 
 A feature-rich roguelike game engine focused on ease of development and beauty
 through text graphics.
