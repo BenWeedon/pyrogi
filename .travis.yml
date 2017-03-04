@@ -6,7 +6,8 @@ python:
     - "3.5"
     - "3.6"
 install: "pip install -r requirements-travis.txt"
-script: "python -m unittest"
+script: "coverage run -m unittest"
+after_success: "coveralls"
 
 notifications:
     email: false
