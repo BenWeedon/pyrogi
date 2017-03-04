@@ -16,9 +16,6 @@ pyrogi
 .. image:: https://img.shields.io/pypi/pyversions/pyrogi.svg
     :target: https://pypi.python.org/pypi/pyrogi
     :alt: Python Versions
-.. image:: https://img.shields.io/pypi/dd/pyrogi.svg
-    :target: https://pypi.python.org/pypi/pyrogi
-    :alt: Downloads
 
 A feature-rich roguelike game engine focused on ease of development and beauty
 through text graphics.
