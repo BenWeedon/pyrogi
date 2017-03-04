@@ -10,6 +10,15 @@ pyrogi
 .. image:: https://coveralls.io/repos/github/BenWeedon/pyrogi/badge.svg?branch=master
     :target: https://coveralls.io/github/BenWeedon/pyrogi?branch=master
     :alt: Test Coverage
+.. image:: https://img.shields.io/pypi/v/pyrogi.svg
+    :target: https://pypi.python.org/pypi/pyrogi
+    :alt: PyPi
+.. image:: https://img.shields.io/pypi/pyversions/pyrogi.svg
+    :target: https://pypi.python.org/pypi/pyrogi
+    :alt: Python Versions
+.. image:: https://img.shields.io/pypi/dd/pyrogi.svg
+    :target: https://pypi.python.org/pypi/pyrogi
+    :alt: Downloads
 
 A feature-rich roguelike game engine focused on ease of development and beauty
 through text graphics.
