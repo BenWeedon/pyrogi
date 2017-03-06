@@ -3,7 +3,7 @@ import json
 import pygame
 from pyrogi import FONT_PATH, FONT_CONFIG_EXTENSION
 from pyrogi.graphics import Graphics, Color
-from pyrogi.util.vector import Vec2
+from pyrogi.util import Vec2
 
 GRAYSCALE_FONT_TYPE = 'grayscale'
 ALPHA_FONT_TYPE = 'alpha'

@@ -3,7 +3,7 @@ import pyrogi
 from pyrogi.graphics.pygame_graphics import PyGameGraphics
 from pyrogi.backend import Backend
 from pyrogi.events import KeyDownEvent, KeyUpEvent, MouseMovedEvent, MouseButtonDownEvent, MouseButtonUpEvent, MouseWheelScrolledEvent
-from pyrogi.util.vector import Vec2
+from pyrogi.util import Vec2
 
 TARGET_FRAMERATE = 60
 

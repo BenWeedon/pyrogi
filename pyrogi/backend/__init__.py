@@ -7,7 +7,7 @@ This class is central to the functioning of the entire pyrogi backend.
 """
 import pyrogi
 from pyrogi.graphics import Tile, Color, Drawable
-from pyrogi.util.vector import Vec2
+from pyrogi.util import Vec2
 
 class Backend(object):
     """The :class:`Backend` class is intended to be extended (for example, by

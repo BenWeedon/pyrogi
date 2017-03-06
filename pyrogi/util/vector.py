@@ -1,4 +1,3 @@
-from __future__ import division
 import math
 
 class Vec2(object):
@@ -62,3 +61,4 @@ class Vec2(object):
 
     def __str__(self):
         return str(self.to_tuple())
+

@@ -1,6 +1,6 @@
 import unittest
 import pyrogi
-from pyrogi.util.vector import Vec2
+from pyrogi.util import Vec2
 from pyrogi.events import pixel_position_to_tile_position
 
 class TestPixelToTileConversion(unittest.TestCase):

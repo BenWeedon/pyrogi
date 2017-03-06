@@ -1,6 +1,6 @@
 import math
 from operator import attrgetter
-from pyrogi.util.vector import Vec2
+from pyrogi.util import Vec2
 
 def parse_text_into_characters(text):
     characters = []

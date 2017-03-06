@@ -1,6 +1,6 @@
 import math
 import pyrogi
-from pyrogi.util.vector import Vec2
+from pyrogi.util import Vec2
 
 LEFT_BUTTON = 1
 MIDDLE_BUTTON = 2

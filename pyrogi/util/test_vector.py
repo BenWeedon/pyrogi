@@ -1,6 +1,6 @@
 import unittest
 import math
-from pyrogi.util.vector import Vec2
+from pyrogi.util import Vec2
 
 class TestVec2(unittest.TestCase):
     def test_init(self):
@@ -151,3 +151,4 @@ class TestVec2(unittest.TestCase):
     def _assertVectorsEqual(self, vec1, vec2):
         self.assertAlmostEqual(vec1.x, vec2.x)
         self.assertAlmostEqual(vec1.y, vec2.y)
+

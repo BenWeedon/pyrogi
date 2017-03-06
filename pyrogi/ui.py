@@ -2,7 +2,7 @@ import types
 import pyrogi
 from pyrogi.backend import UIElementContainer
 from pyrogi.graphics import Tile, Color, SolidPaint, Drawable
-from pyrogi.util.vector import Vec2
+from pyrogi.util import Vec2
 
 class UIElement(UIElementContainer):
     def __init__(self, screen, position, dimensions):

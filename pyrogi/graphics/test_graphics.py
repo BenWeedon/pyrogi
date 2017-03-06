@@ -1,6 +1,6 @@
 import unittest
 from pyrogi.graphics import parse_text_into_characters, Color, LinearGradientPaint
-from pyrogi.util.vector import Vec2
+from pyrogi.util import Vec2
 
 class TestParseTextIntoCharacters(unittest.TestCase):
     def test_plain_characters(self):

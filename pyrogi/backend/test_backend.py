@@ -1,6 +1,6 @@
 import unittest
 from pyrogi.backend import Screen, Backend
-from pyrogi.util.vector import Vec2
+from pyrogi.util import Vec2
 
 class TestScreen(Screen):
     pass
