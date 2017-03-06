@@ -1,5 +1,7 @@
 import os.path
 
+VERSION = '0.1.2'
+
 FONT_PATH = os.path.join('res', 'fonts')
 FONT_CONFIG_EXTENSION = '.font.json'
 

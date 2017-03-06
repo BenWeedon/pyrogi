@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+import pyrogi
 
 def get_readme_text():
     with open('README.rst') as f:
@@ -8,7 +9,7 @@ setup(
     name = 'pyrogi',
     packages = find_packages(),
     install_requires = ['pygame'],
-    version = '0.1.2',
+    version = pyrogi.VERSION,
     description = 'A feature-rich roguelike game engine focused on ease of development and beauty through text graphics.',
     long_description = get_readme_text(),
     license = 'GPLv3',
