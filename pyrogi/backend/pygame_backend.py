@@ -19,7 +19,7 @@ class PyGameBackend(Backend):
         clock = pygame.time.Clock()
         g = PyGameGraphics()
         g.init_window(
-            pyrogi.window_dimensions, pyrogi.tile_dimensions, self.caption
+            self.window_dimensions, self.tile_dimensions, self.caption
         )
         while True:
             if pygame.event.peek(pygame.QUIT):
@@ -54,3 +54,4 @@ class PyGameBackend(Backend):
                     self.handle_mouse_button_down(MouseButtonDownEvent(event.pos, event.button))
             elif event.type == pygame.MOUSEBUTTONUP:
                 self.handle_mouse_button_up(MouseButtonUpEvent(event.pos, event.button))
+

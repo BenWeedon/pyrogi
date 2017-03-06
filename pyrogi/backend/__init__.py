@@ -31,8 +31,8 @@ class Backend(object):
     """
 
     def __init__(self, window_dimensions, tile_dimensions, caption, starting_screen):
-        pyrogi.window_dimensions = window_dimensions
-        pyrogi.tile_dimensions = tile_dimensions
+        self.window_dimensions = window_dimensions
+        self.tile_dimensions = tile_dimensions
         self.caption = caption
         self.screens = [starting_screen]
 
@@ -123,7 +123,7 @@ class Backend(object):
         :param event: The event triggered.
         :type event: MouseMovedEvent
         """
-        pyrogi.mouse_position = event.position
+        self.mouse_position = event.position
         self.get_current_screen().handle_mouse_moved(event)
     def handle_mouse_button_down(self, event):
         """Called by the :class:`Backend` implementation when a mouse button
