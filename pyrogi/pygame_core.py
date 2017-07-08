@@ -1,17 +1,14 @@
 import pygame
 import pyrogi
-from pyrogi.graphics.pygame_graphics import PyGameGraphics
-from pyrogi.backend import Backend
-from pyrogi.events import KeyDownEvent, KeyUpEvent, MouseMovedEvent, MouseButtonDownEvent, MouseButtonUpEvent, MouseWheelScrolledEvent
-from pyrogi.util import Vec2
+from pyrogi.drawing.pygame_graphics import PyGameGraphics
+from pyrogi import Backend, KeyDownEvent, KeyUpEvent, MouseMovedEvent, MouseButtonDownEvent, MouseButtonUpEvent, MouseWheelScrolledEvent
 
 TARGET_FRAMERATE = 60
 
 class PyGameBackend(Backend):
-    def __init__(self, window_dimensions, tile_dimensions, caption, starting_screen):
+    def __init__(self, window_dimensions, tile_dimensions, caption):
         super(PyGameBackend, self).__init__(
-            window_dimensions, tile_dimensions,
-            caption, starting_screen
+            window_dimensions, tile_dimensions, caption
         )
         pygame.init()
 

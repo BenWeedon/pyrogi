@@ -61,4 +61,3 @@ class Vec2(object):
 
     def __str__(self):
         return str(self.to_tuple())
-

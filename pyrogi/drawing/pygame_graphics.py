@@ -1,8 +1,9 @@
-import os.path
 import json
+import os.path
 import pygame
-from pyrogi import FONT_PATH, FONT_CONFIG_EXTENSION
-from pyrogi.graphics import Graphics, Color
+
+from pyrogi import FONT_CONFIG_EXTENSION, FONT_PATH
+from pyrogi.drawing import Graphics
 from pyrogi.util import Vec2
 
 GRAYSCALE_FONT_TYPE = 'grayscale'
