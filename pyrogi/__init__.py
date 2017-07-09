@@ -7,7 +7,8 @@ import os.path
 
 VERSION = '0.1.3'
 
-FONT_PATH = os.path.join('res', 'fonts')
+PROJECT_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+FONT_PATH = os.path.join(PROJECT_ROOT, 'res', 'fonts')
 FONT_CONFIG_EXTENSION = '.font.json'
 
 # A global reference to the Backend currently running.
