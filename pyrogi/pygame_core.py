@@ -35,6 +35,8 @@ class PyGameBackend(Backend):
             pygame.display.update()
 
     def _handle_events(self, events):
+        # TODO: Figure out exact type in event.key, event.mod, etc. and update
+        # event documentation accordingly.
         for event in events:
             if event.type == pygame.KEYDOWN:
                 self.handle_key_down(KeyDownEvent(event.unicode, event.key, event.mod))
@@ -51,4 +53,3 @@ class PyGameBackend(Backend):
                     self.handle_mouse_button_down(MouseButtonDownEvent(event.pos, event.button))
             elif event.type == pygame.MOUSEBUTTONUP:
                 self.handle_mouse_button_up(MouseButtonUpEvent(event.pos, event.button))
-
