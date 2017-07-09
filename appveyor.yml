@@ -1,0 +1,9 @@
+environment:
+  matrix:
+  - PYTHON: "C:\\Python33"
+  - PYTHON: "C:\\Python34"
+  - PYTHON: "C:\\Python35"
+  - PYTHON: "C:\\Python36"
+install: "%PYTHON%\\python.exe -m pip install -r requirements-appveyor.txt"
+build: off
+test_script: "%PYTHON%\\python.exe -m unittest"

@@ -6,7 +6,10 @@ pyrogi
     :alt: Documentation Status
 .. image:: https://travis-ci.org/BenWeedon/pyrogi.svg?branch=master
     :target: https://travis-ci.org/BenWeedon/pyrogi
-    :alt: Test Status
+    :alt: Travis Test Status
+.. image:: https://ci.appveyor.com/api/projects/status/github/benweedon/pyrogi?branch=master&svg=true
+    :target: https://ci.appveyor.com/project/benweedon/pyrogi
+    :alt: AppVeyor Test Status
 .. image:: https://coveralls.io/repos/github/BenWeedon/pyrogi/badge.svg?branch=master
     :target: https://coveralls.io/github/BenWeedon/pyrogi?branch=master
     :alt: Test Coverage
