@@ -15,8 +15,8 @@ setup(
     license = 'GPLv3',
     author = 'Ben Weedon',
     author_email = 'ben.weedon@outlook.com',
-    url = 'https://github.com/BenWeedon/pyrogi',
-    download_url = 'https://github.com/BenWeedon/pyrogi/archive/v0.1.0.tar.gz',
+    url = 'https://github.com/benweedon/pyrogi',
+    download_url = 'https://github.com/benweedon/pyrogi/archive/v0.1.0.tar.gz',
     keywords = ['game', 'engine', 'game-engine', 'roguelike', 'ascii'],
     classifiers = [
         'Programming Language :: Python',
